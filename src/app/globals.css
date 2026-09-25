@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #FFFFFF;
+    --bg-surface: #FFFFFF;
+    --bg-surface-elevated: #F8FAFC;
+    --border-color: #E2E8F0;
+    --border-gold: rgba(229, 149, 22, 0.4);
+    --gold-primary: #E59516;
+    --gold-hover: #D08209;
+    --gold-subtle: rgba(229, 149, 22, 0.12);
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+    background-color: #FFFFFF;
+  }
+
+  body {
+    background-color: #FFFFFF;
+    color: #0F172A;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Custom subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F1F5F9;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #E59516;
+  }
+}
+
+/* Background Animated Pan and Float Keyframes */
+@keyframes kenburns-slow {
+  0% {
+    transform: scale(1.0) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate(-1.5%, -1%);
+  }
+  100% {
+    transform: scale(1.0) translate(0, 0);
+  }
+}
+
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-kenburns {
+  animation: kenburns-slow 28s ease-in-out infinite alternate;
+}
+
+.animate-float {
+  animation: float-subtle 6s ease-in-out infinite;
+}
+
+/* Custom utility classes */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #B45309 0%, #D97706 50%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+}
+
+.card-light {
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid #E2E8F0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-light:hover {
+  border-color: rgba(229, 149, 22, 0.5);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

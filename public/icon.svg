@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD066" />
+      <stop offset="50%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+    <linearGradient id="darkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded App Icon Background -->
+  <rect width="64" height="64" rx="16" fill="url(#darkGrad)" />
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" />
+
+  <!-- Stylized Automotive & Safari Compass Arc -->
+  <path d="M12 48 C 24 38, 40 38, 52 48" stroke="url(#goldGrad)" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6" />
+
+  <!-- Monogram "ER" in Bold Luxury Typography -->
+  <!-- E -->
+  <path d="M16 18 H 32 V 24 H 23 V 29 H 30 V 35 H 23 V 40 H 32 V 46 H 16 Z" fill="url(#goldGrad)" />
+  
+  <!-- R -->
+  <path d="M35 18 H 45 C 50 18, 53 21, 53 26 C 53 30, 50 33, 46 34 L 53 46 H 45 L 39.5 35 H 42 C 44.5 35, 46 33.5, 46 31 C 46 28.5, 44.5 24, 41 24 H 35 Z M 42 24 H 42" fill="url(#goldGrad)" />
+  <rect x="35" y="18" width="6.5" height="28" fill="url(#goldGrad)" />
+</svg>
