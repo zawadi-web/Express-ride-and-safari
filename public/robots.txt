@@ -1,0 +1,7 @@
+# User-agent rules for Express Ride & Safaris Kenya
+User-agent: *
+Allow: /
+
+# Host & Sitemap
+Host: https://expressrideandsafaris.co.ke
+Sitemap: https://expressrideandsafaris.co.ke/sitemap.xml

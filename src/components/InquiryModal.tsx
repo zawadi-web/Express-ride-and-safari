@@ -38,9 +38,17 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
 
   if (!isOpen) return null;
 
+  const sanitize = (val: string) => val.replace(/[<>'"`;]/g, '').trim();
+
   const handleWhatsAppDirect = () => {
-    const message = `Hello Express Ride & Safaris Kenya, I am inquiring about ${targetItem}${category ? ` (${category})` : ''}.${date ? ` Travel date: ${date}.` : ''} Location: ${location}. Please let me know availability.`;
-    window.open(getWhatsAppUrl(message), '_blank');
+    const cleanTarget = sanitize(targetItem);
+    const cleanCategory = category ? ` (${sanitize(category)})` : '';
+    const cleanDate = date ? ` Travel date: ${sanitize(date)}.` : '';
+    const cleanLocation = location ? ` Location: ${sanitize(location)}.` : '';
+    const cleanName = name.trim() ? `, my name is ${sanitize(name)}` : '';
+
+    const message = `Hello Express Ride & Safaris Kenya${cleanName}. I am inquiring about ${cleanTarget}${cleanCategory}.${cleanDate}${cleanLocation} Please let me know availability.`;
+    window.open(getWhatsAppUrl(message), '_blank', 'noopener,noreferrer');
     onClose();
   };
 
