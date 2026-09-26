@@ -92,8 +92,8 @@ export const Hero: React.FC = () => {
               {/* High-quality realistic automotive photograph */}
               <div className="relative w-full aspect-[4/3] sm:aspect-[16/11]">
                 <Image
-                  src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=85"
-                  alt="Premium Toyota Land Cruiser Prado rental vehicle in Kenya"
+                  src="/images/cars/toyota-prado.jpg"
+                  alt="Premium Toyota Land Cruiser Prado TX / J150 rental vehicle in Kenya"
                   fill
                   priority
                   className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-500 ease-out"

@@ -9,8 +9,8 @@ const BACKGROUND_IMAGES = [
     title: 'Kenya Safari Wilderness',
   },
   {
-    url: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=2000&q=85',
-    title: 'Modern 4WD Travel on Road',
+    url: '/images/cars/toyota-prado.jpg',
+    title: 'Executive Toyota Prado TX J150',
   },
   {
     url: 'https://images.unsplash.com/photo-1534177616072-ef7dc120449d?auto=format&fit=crop&w=2000&q=85',
@@ -21,8 +21,8 @@ const BACKGROUND_IMAGES = [
     title: 'Diani Beach Turquoise Coastline',
   },
   {
-    url: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=2000&q=85',
-    title: 'Tsavo National Reserve Trail',
+    url: '/images/cars/land-cruiser-tour.jpg',
+    title: 'Custom Safari 4x4 Land Cruiser',
   },
 ];
 

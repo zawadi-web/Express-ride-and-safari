@@ -15,7 +15,7 @@ export const AboutSection: React.FC = () => {
             <div className="relative rounded-2xl overflow-hidden border border-slate-200/90 bg-white shadow-2xl ring-1 ring-slate-900/5 group">
               <div className="relative w-full aspect-[4/3]">
                 <Image
-                  src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1000&q=85"
+                  src="/images/cars/land-cruiser-tour.jpg"
                   alt="Express Ride and Safaris Kenya vehicle exploring nature"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
