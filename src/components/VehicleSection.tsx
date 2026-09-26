@@ -14,7 +14,15 @@ interface VehicleSectionProps {
 export const VehicleSection: React.FC<VehicleSectionProps> = ({ onSelectVehicle }) => {
   const [selectedCategory, setSelectedCategory] = useState<VehicleCategory>('All');
 
-  const categories: VehicleCategory[] = ['All', 'Economy', 'Saloon', 'SUV', 'Safari Vehicle'];
+  const categories: VehicleCategory[] = [
+    'All',
+    'SUV',
+    'Luxury Van',
+    'Saloon',
+    'Economy',
+    'Safari Vehicle',
+    'Commercial',
+  ];
 
   const filteredVehicles = selectedCategory === 'All'
     ? VEHICLES

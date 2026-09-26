@@ -1,9 +1,9 @@
-export type VehicleCategory = 'All' | 'Economy' | 'Saloon' | 'SUV' | 'Safari Vehicle';
+export type VehicleCategory = 'All' | 'SUV' | 'Luxury Van' | 'Saloon' | 'Economy' | 'Safari Vehicle' | 'Commercial';
 
 export interface Vehicle {
   id: string;
   name: string;
-  category: 'Economy' | 'Saloon' | 'SUV' | 'Safari Vehicle';
+  category: 'Economy' | 'Saloon' | 'SUV' | 'Safari Vehicle' | 'Luxury Van' | 'Commercial';
   seats: number;
   transmission: 'Automatic' | 'Manual';
   fuelType: 'Petrol' | 'Diesel' | 'Hybrid';
