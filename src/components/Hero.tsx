@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { COMPANY_INFO } from '@/data/content';
 import { getWhatsAppUrl } from '@/utils/whatsapp';
-import { WhatsAppIcon, MapPinIcon, PhoneIcon, ArrowRightIcon, ShieldCheckIcon, ClockIcon } from './Icons';
+import { WhatsAppIcon, MapPinIcon, PhoneIcon, ArrowRightIcon, ShieldCheckIcon, ClockIcon, MailIcon } from './Icons';
 
 export const Hero: React.FC = () => {
   return (
@@ -54,10 +54,17 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Subtle Contact and Location Line */}
-            <div className="pt-4 border-t border-slate-200/80 flex flex-wrap items-center gap-y-3 gap-x-6 text-xs text-slate-600">
+            <div className="pt-4 border-t border-slate-200/80 flex flex-wrap items-center gap-y-3 gap-x-5 text-xs text-slate-600">
               <div className="flex items-center gap-2">
                 <MapPinIcon className="w-4 h-4 text-[#D97706]" />
                 <span className="font-bold text-slate-900">{COMPANY_INFO.locations}</span>
+              </div>
+              <span className="text-slate-300 hidden sm:inline">•</span>
+              <div className="flex items-center gap-1.5">
+                <MailIcon className="w-3.5 h-3.5 text-[#D97706]" />
+                <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-black font-semibold transition-colors">
+                  {COMPANY_INFO.email}
+                </a>
               </div>
               <span className="text-slate-300 hidden sm:inline">•</span>
               <div className="flex items-center gap-2">

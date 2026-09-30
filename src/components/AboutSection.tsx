@@ -55,7 +55,7 @@ export const AboutSection: React.FC = () => {
             {/* Factual copy directly as instructed */}
             <div className="space-y-4 text-base text-slate-700 leading-relaxed font-normal">
               <p>
-                Express Ride &amp; Safaris Kenya provides car-hire, travel and safari services for customers exploring Kenya. With services available in Mombasa and Nairobi, the company aims to make travel convenient, comfortable and accessible.
+                Express Ride &amp; Safaris Kenya provides car-hire, travel and safari services for customers exploring Kenya. Headquartered in Bamburi, Mombasa with operational coverage in Nairobi and upcountry, the company aims to make travel convenient, comfortable and accessible.
               </p>
               <p>
                 Whether you need a compact car for daily errands, an executive saloon for corporate functions, a rugged 4x4 SUV for cross-country routes, or a dedicated safari vehicle to witness Kenya&apos;s celebrated wildlife parks, we focus on vehicle dependability and straightforward customer support.
@@ -66,7 +66,7 @@ export const AboutSection: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs text-slate-800 font-semibold">
               <div className="flex items-center gap-2.5 p-3.5 rounded-xl bg-white/90 backdrop-blur-sm border border-slate-200/90 shadow-xs">
                 <CheckIcon className="w-4 h-4 text-[#D97706] shrink-0" />
-                <span>Mombasa &amp; Coast Coverage</span>
+                <span>Bamburi HQ &amp; Coast Coverage</span>
               </div>
               <div className="flex items-center gap-2.5 p-3.5 rounded-xl bg-white/90 backdrop-blur-sm border border-slate-200/90 shadow-xs">
                 <CheckIcon className="w-4 h-4 text-[#D97706] shrink-0" />

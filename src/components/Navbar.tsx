@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { COMPANY_INFO } from '@/data/content';
 import { getWhatsAppUrl } from '@/utils/whatsapp';
-import { PhoneIcon, WhatsAppIcon, MapPinIcon, MenuIcon, XIcon, ArrowRightIcon } from './Icons';
+import { PhoneIcon, WhatsAppIcon, MapPinIcon, MenuIcon, XIcon, ArrowRightIcon, MailIcon } from './Icons';
 
 interface NavbarProps {
   onOpenInquiry?: (serviceOrVehicle?: string) => void;
@@ -49,6 +49,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
           </div>
 
           <div className="flex items-center gap-6">
+            <div className="flex items-center gap-1.5">
+              <MailIcon className="w-3.5 h-3.5 text-[#F59E0B]" />
+              <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-white transition-colors font-medium">
+                {COMPANY_INFO.email}
+              </a>
+            </div>
+
             <div className="flex items-center gap-2">
               <PhoneIcon className="w-3.5 h-3.5 text-[#F59E0B]" />
               <a href={`tel:${COMPANY_INFO.phones[0]}`} className="hover:text-white transition-colors font-medium">
@@ -189,6 +196,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
                 Call {COMPANY_INFO.phones[0]}
               </a>
 
+              <a
+                href={`mailto:${COMPANY_INFO.email}`}
+                className="w-full inline-flex items-center justify-center gap-2.5 py-3 rounded-xl bg-slate-100 text-slate-900 font-bold text-xs border border-slate-200"
+              >
+                <MailIcon className="w-4 h-4 text-[#D97706]" />
+                {COMPANY_INFO.email}
+              </a>
+
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
@@ -205,7 +220,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
             </div>
 
             <div className="pt-4 text-xs text-center text-slate-500 font-medium">
-              Locations: Mombasa &amp; Nairobi, Kenya
+              Head Office: Bamburi, Mombasa &bull; Nairobi Hub, Kenya
             </div>
           </div>
         </div>

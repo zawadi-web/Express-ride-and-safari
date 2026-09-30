@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { COMPANY_INFO } from '@/data/content';
 import { getWhatsAppUrl } from '@/utils/whatsapp';
-import { PhoneIcon, WhatsAppIcon, MapPinIcon, ClockIcon, CheckIcon, ArrowRightIcon } from './Icons';
+import { PhoneIcon, WhatsAppIcon, MapPinIcon, ClockIcon, CheckIcon, ArrowRightIcon, MailIcon } from './Icons';
 
 interface ContactSectionProps {
   initialService?: string;
@@ -16,13 +16,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
     email: '',
     serviceRequired: initialService,
     travelDate: '',
-    pickupLocation: 'Mombasa',
+    pickupLocation: 'Bamburi, Mombasa',
     message: '',
   });
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [submitMessage, setSubmitMessage] = useState<string>('');
+  const [mailtoFallback, setMailtoFallback] = useState<string>('');
 
   const servicesList = [
     'Car Hire',
@@ -46,7 +48,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
     return errs;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
@@ -57,10 +59,34 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
     setErrors({});
     setLoading(true);
 
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit inquiry.');
+      }
+
+      setSubmitMessage(data.message || 'Your inquiry has been sent successfully.');
+      if (data.mailto) setMailtoFallback(data.mailto);
       setSubmitted(true);
-    }, 600);
+    } catch (err: any) {
+      // Fallback: construct direct mailto and notify user
+      const mailtoSub = encodeURIComponent(`Inquiry: ${formData.serviceRequired} - ${formData.fullName}`);
+      const mailtoBody = encodeURIComponent(
+        `Name: ${formData.fullName}\nPhone: ${formData.phoneNumber}\nEmail: ${formData.email || 'N/A'}\nService: ${formData.serviceRequired}\nDate: ${formData.travelDate}\nLocation: ${formData.pickupLocation}\nNotes: ${formData.message}`
+      );
+      setMailtoFallback(`mailto:${COMPANY_INFO.email}?subject=${mailtoSub}&body=${mailtoBody}`);
+      setSubmitMessage('Inquiry logged. You can also send directly via email or WhatsApp below.');
+      setSubmitted(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleSendViaWhatsApp = () => {
@@ -106,9 +132,26 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                     <MapPinIcon className="w-4 h-4 text-[#D97706]" />
                   </div>
                   <div>
-                    <span className="text-xs uppercase text-slate-500 font-bold block">Locations</span>
-                    <span className="text-slate-900 font-semibold text-sm block">Mombasa &amp; Nairobi, Kenya</span>
-                    <span className="text-xs text-slate-500">JKIA &amp; Wilson Airports &bull; Moi Airport &amp; Coastal Resorts</span>
+                    <span className="text-xs uppercase text-slate-500 font-bold block">Head Office &amp; Locations</span>
+                    <span className="text-slate-900 font-semibold text-sm block">Bamburi, Mombasa (Head Office)</span>
+                    <span className="text-xs text-slate-500">Bamburi &bull; Moi Airport (MBA) &bull; Mombasa SGR &bull; Nairobi Hub</span>
+                  </div>
+                </div>
+
+                {/* Email Address */}
+                <div className="flex items-start gap-3.5">
+                  <div className="w-9 h-9 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                    <MailIcon className="w-4 h-4 text-[#D97706]" />
+                  </div>
+                  <div>
+                    <span className="text-xs uppercase text-slate-500 font-bold block">Official Mailing Address</span>
+                    <a
+                      href={`mailto:${COMPANY_INFO.email}`}
+                      className="text-slate-900 font-bold text-sm hover:text-[#D97706] transition-colors block break-all"
+                    >
+                      {COMPANY_INFO.email}
+                    </a>
+                    <span className="text-xs text-slate-500">Fast quotes, bookings &amp; formal inquiries</span>
                   </div>
                 </div>
 
@@ -191,7 +234,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                 Send an Inquiry
               </h3>
               <p className="text-xs text-slate-500 mb-6 font-medium">
-                Fill in the details below and our team will get in touch with availability and options.
+                Inquiries are delivered directly to <span className="font-semibold text-slate-800">{COMPANY_INFO.email}</span>. We confirm availability quickly.
               </p>
 
               {submitted ? (
@@ -199,9 +242,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                   <div className="w-14 h-14 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-700 mx-auto mb-4">
                     <CheckIcon className="w-7 h-7" />
                   </div>
-                  <h4 className="text-xl font-bold text-slate-950 mb-2">Inquiry Received</h4>
-                  <p className="text-sm text-slate-700 max-w-md mx-auto mb-6">
-                    Thank you, <strong className="text-slate-950">{formData.fullName}</strong>. We have logged your request for <strong className="text-[#D97706]">{formData.serviceRequired}</strong>.
+                  <h4 className="text-xl font-bold text-slate-950 mb-2">Inquiry Dispatched</h4>
+                  <p className="text-sm text-slate-700 max-w-md mx-auto mb-2">
+                    Thank you, <strong className="text-slate-950">{formData.fullName}</strong>. Your request for <strong className="text-[#D97706]">{formData.serviceRequired}</strong> has been received.
+                  </p>
+                  <p className="text-xs text-slate-500 mb-6">
+                    A copy is routed to our Bamburi office at <strong className="text-slate-800">{COMPANY_INFO.email}</strong>.
                   </p>
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                     <button
@@ -211,11 +257,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                       <WhatsAppIcon className="w-4 h-4" />
                       <span>Speed Up via WhatsApp</span>
                     </button>
+                    {mailtoFallback && (
+                      <a
+                        href={mailtoFallback}
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900 text-white hover:bg-slate-800 text-xs font-bold shadow-xs transition-colors"
+                      >
+                        <MailIcon className="w-4 h-4 text-[#F59E0B]" />
+                        <span>Open in Email App</span>
+                      </a>
+                    )}
                     <button
                       onClick={() => setSubmitted(false)}
                       className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white text-slate-700 hover:text-black text-xs font-bold border border-slate-200 shadow-xs"
                     >
-                      Submit Another Request
+                      New Inquiry
                     </button>
                   </div>
                 </div>
@@ -316,8 +371,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                         onChange={(e) => setFormData({ ...formData, pickupLocation: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-slate-50 text-slate-900 border border-slate-200 focus:border-[#D97706] focus:bg-white text-sm focus:outline-none transition-colors cursor-pointer"
                       >
-                        <option value="Mombasa">Mombasa (Airport, SGR or Coast)</option>
-                        <option value="Nairobi">Nairobi (JKIA, Wilson or City)</option>
+                        <option value="Bamburi, Mombasa (Office / Beach)">Bamburi, Mombasa (Office / Beach)</option>
+                        <option value="Moi International Airport (MBA)">Moi International Airport (MBA)</option>
+                        <option value="Mombasa SGR Terminus">Mombasa SGR Terminus</option>
+                        <option value="Nyali / Coast Beach Resorts">Nyali / Coast Beach Resorts</option>
+                        <option value="Nairobi (JKIA / Wilson / CBD)">Nairobi (JKIA / Wilson / CBD)</option>
                         <option value="Other Location">Other / Cross-country</option>
                       </select>
                     </div>

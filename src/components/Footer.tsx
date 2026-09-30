@@ -150,8 +150,22 @@ export const Footer: React.FC = () => {
               <div className="flex items-start gap-2.5">
                 <MapPinIcon className="w-4 h-4 text-[#F3A81D] shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-semibold text-white block">Operating Locations</span>
-                  <span className="text-gray-400">{COMPANY_INFO.locations}</span>
+                  <span className="font-semibold text-white block">Head Office &amp; Coverage</span>
+                  <span className="text-gray-300 font-medium">Bamburi, Mombasa (HQ)</span>
+                  <span className="text-gray-500 block text-[11px]">Coast Resorts &bull; Nairobi Hub</span>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-2.5">
+                <MailIcon className="w-4 h-4 text-[#F3A81D] shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-semibold text-white block">Official Email</span>
+                  <a
+                    href={`mailto:${COMPANY_INFO.email}`}
+                    className="text-gray-300 hover:text-[#F3A81D] transition-colors break-all"
+                  >
+                    {COMPANY_INFO.email}
+                  </a>
                 </div>
               </div>
 
@@ -205,7 +219,7 @@ export const Footer: React.FC = () => {
             &copy; {currentYear} {COMPANY_INFO.name}. All rights reserved.
           </p>
           <p className="text-gray-400">
-            Mombasa &amp; Nairobi, Kenya &bull; Car Hire, Safaris &amp; Airport Transfers
+            Head Office: Bamburi, Mombasa &bull; Nairobi Hub &bull; Kenya
           </p>
         </div>
 
