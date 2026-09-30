@@ -220,7 +220,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
             </div>
 
             <div className="pt-4 text-xs text-center text-slate-500 font-medium">
-              Head Office: Bamburi, Mombasa &bull; Nairobi Hub, Kenya
+              Head Office: Bamburi Fisheries, Mombasa &bull; Nairobi Hub, Kenya
             </div>
           </div>
         </div>

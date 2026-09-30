@@ -6,13 +6,13 @@ export const COMPANY_INFO = {
   tagline: 'Car Hire & Rentals | Safaris | Tours & Travel',
   heroHeadline: 'Drive. Explore. Experience Kenya.',
   heroSubheadline: 'Reliable car hire, airport transfers and safari travel services across Kenya.',
-  locations: 'Bamburi, Mombasa & Nairobi',
-  primaryOffice: 'Bamburi, Mombasa, Kenya',
+  locations: 'Bamburi Fisheries, Mombasa & Nairobi',
+  primaryOffice: 'Bamburi Fisheries, Mombasa, Kenya',
   locationDetails: [
     {
-      city: 'Bamburi, Mombasa (Head Office)',
-      description: 'Head office located in Bamburi, Mombasa. Fast dispatch across Bamburi, Nyali, Moi International Airport (MBA), Mombasa SGR Terminus, and Coast resorts.',
-      address: 'Bamburi, Mombasa, Kenya',
+      city: 'Bamburi Fisheries, Mombasa (Head Office)',
+      description: 'Head office located at Bamburi Fisheries, Mombasa. Fast dispatch across Bamburi, Nyali, Moi International Airport (MBA), Mombasa SGR Terminus, and Coast resorts.',
+      address: 'Bamburi Fisheries, Mombasa, Kenya',
       contact: '0748769876 / 0793612412',
     },
     {

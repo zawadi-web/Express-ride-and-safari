@@ -151,7 +151,7 @@ export const Footer: React.FC = () => {
                 <MapPinIcon className="w-4 h-4 text-[#F3A81D] shrink-0 mt-0.5" />
                 <div>
                   <span className="font-semibold text-white block">Head Office &amp; Coverage</span>
-                  <span className="text-gray-300 font-medium">Bamburi, Mombasa (HQ)</span>
+                  <span className="text-gray-300 font-medium">Bamburi Fisheries, Mombasa (HQ)</span>
                   <span className="text-gray-500 block text-[11px]">Coast Resorts &bull; Nairobi Hub</span>
                 </div>
               </div>
@@ -219,7 +219,7 @@ export const Footer: React.FC = () => {
             &copy; {currentYear} {COMPANY_INFO.name}. All rights reserved.
           </p>
           <p className="text-gray-400">
-            Head Office: Bamburi, Mombasa &bull; Nairobi Hub &bull; Kenya
+            Head Office: Bamburi Fisheries, Mombasa &bull; Nairobi Hub &bull; Kenya
           </p>
         </div>
 

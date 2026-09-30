@@ -16,7 +16,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
     email: '',
     serviceRequired: initialService,
     travelDate: '',
-    pickupLocation: 'Bamburi, Mombasa',
+    pickupLocation: 'Bamburi Fisheries, Mombasa',
     message: '',
   });
 
@@ -133,8 +133,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                   </div>
                   <div>
                     <span className="text-xs uppercase text-slate-500 font-bold block">Head Office &amp; Locations</span>
-                    <span className="text-slate-900 font-semibold text-sm block">Bamburi, Mombasa (Head Office)</span>
-                    <span className="text-xs text-slate-500">Bamburi &bull; Moi Airport (MBA) &bull; Mombasa SGR &bull; Nairobi Hub</span>
+                    <span className="text-slate-900 font-semibold text-sm block">Bamburi Fisheries, Mombasa (Head Office)</span>
+                    <span className="text-xs text-slate-500">Bamburi Fisheries &bull; Moi Airport (MBA) &bull; Mombasa SGR &bull; Nairobi Hub</span>
                   </div>
                 </div>
 
@@ -247,7 +247,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                     Thank you, <strong className="text-slate-950">{formData.fullName}</strong>. Your request for <strong className="text-[#D97706]">{formData.serviceRequired}</strong> has been received.
                   </p>
                   <p className="text-xs text-slate-500 mb-6">
-                    A copy is routed to our Bamburi office at <strong className="text-slate-800">{COMPANY_INFO.email}</strong>.
+                    A copy is routed to our Bamburi Fisheries office at <strong className="text-slate-800">{COMPANY_INFO.email}</strong>.
                   </p>
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                     <button
@@ -371,10 +371,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                         onChange={(e) => setFormData({ ...formData, pickupLocation: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-slate-50 text-slate-900 border border-slate-200 focus:border-[#D97706] focus:bg-white text-sm focus:outline-none transition-colors cursor-pointer"
                       >
-                        <option value="Bamburi, Mombasa (Office / Beach)">Bamburi, Mombasa (Office / Beach)</option>
+                        <option value="Bamburi Fisheries, Mombasa (Head Office)">Bamburi Fisheries, Mombasa (Head Office)</option>
+                        <option value="Bamburi Beach / Nyali Resorts">Bamburi Beach / Nyali Resorts</option>
                         <option value="Moi International Airport (MBA)">Moi International Airport (MBA)</option>
                         <option value="Mombasa SGR Terminus">Mombasa SGR Terminus</option>
-                        <option value="Nyali / Coast Beach Resorts">Nyali / Coast Beach Resorts</option>
                         <option value="Nairobi (JKIA / Wilson / CBD)">Nairobi (JKIA / Wilson / CBD)</option>
                         <option value="Other Location">Other / Cross-country</option>
                       </select>

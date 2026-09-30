@@ -124,7 +124,7 @@ export async function POST(request: Request) {
               </div>
             </div>
             <div class="footer">
-              Express Ride &amp; Safaris Kenya &bull; Bamburi, Mombasa &bull; Notification System
+              Express Ride &amp; Safaris Kenya &bull; Bamburi Fisheries, Mombasa &bull; Notification System
             </div>
           </div>
         </body>
@@ -183,7 +183,7 @@ export async function POST(request: Request) {
                   </p>
                 </div>
                 <div class="footer">
-                  Head Office: Bamburi, Mombasa, Kenya &bull; Nairobi Hub
+                  Head Office: Bamburi Fisheries, Mombasa, Kenya &bull; Nairobi Hub
                 </div>
               </div>
             </body>
