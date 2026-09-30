@@ -18,11 +18,12 @@ export const metadata: Metadata = {
     'Diani beach tours',
   ],
   authors: [{ name: 'Express Ride & Safaris Kenya' }],
+  metadataBase: new URL('https://express-ride-and-safari.co.ke'),
   openGraph: {
     title: 'Express Ride & Safaris Kenya | Car Hire, Safaris & Tours',
     description:
       'Reliable car hire, airport transfers, and tailor-made safari tours across Mombasa and Nairobi, Kenya.',
-    url: 'https://expressrideandsafaris.co.ke',
+    url: 'https://express-ride-and-safari.co.ke',
     siteName: 'Express Ride & Safaris Kenya',
     locale: 'en_KE',
     type: 'website',
