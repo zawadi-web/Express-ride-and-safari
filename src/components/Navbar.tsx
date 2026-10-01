@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { COMPANY_INFO } from '@/data/content';
 import { getWhatsAppUrl } from '@/utils/whatsapp';
 import { PhoneIcon, WhatsAppIcon, MapPinIcon, MenuIcon, XIcon, ArrowRightIcon, MailIcon } from './Icons';
@@ -90,17 +91,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Brand Logo */}
-          <Link href="#home" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center font-black text-black text-xl shadow-md shadow-[#F59E0B]/30 group-hover:scale-105 transition-transform">
-              ER
-            </div>
-            <div className="flex flex-col">
-              <span className="text-slate-950 font-black tracking-wider text-base leading-tight">
-                EXPRESS RIDE &amp;
-              </span>
-              <span className="text-[#D97706] font-bold text-xs tracking-widest uppercase">
-                SAFARIS KENYA
-              </span>
+          <Link href="#home" className="flex items-center group py-0.5">
+            <div className="relative flex items-center bg-black px-2.5 py-1 rounded-xl border border-amber-500/30 shadow-md shadow-black/10 group-hover:border-amber-500 transition-all">
+              <Image
+                src="/logo.png"
+                alt="Express Ride & Safaris Kenya"
+                width={190}
+                height={75}
+                className="h-9 sm:h-11 md:h-12 w-auto object-contain group-hover:scale-[1.02] transition-transform"
+                priority
+              />
             </div>
           </Link>
 

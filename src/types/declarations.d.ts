@@ -4,11 +4,14 @@ declare module 'next' {
     description?: string;
     keywords?: string[] | string;
     authors?: Array<{ name: string; url?: string }>;
+    metadataBase?: any;
     openGraph?: any;
     twitter?: any;
     icons?: any;
     alternates?: any;
     robots?: any;
+    verification?: any;
+    [key: string]: any;
   }
   export type ResolvingMetadata = Promise<Metadata>;
   export type ResolvingViewport = Promise<any>;
@@ -60,4 +63,14 @@ declare module 'next/font/google' {
 declare module 'next/types.js' {
   export type ResolvingMetadata = Promise<any>;
   export type ResolvingViewport = Promise<any>;
+}
+
+declare module 'next/dist/lib/metadata/types/metadata-interface.js' {
+  export type ResolvingMetadata = Promise<any>;
+  export type ResolvingViewport = Promise<any>;
+  export type Metadata = any;
+  export type ResolvedMetadata = any;
+  export type ResolvedViewport = any;
+  const content: any;
+  export default content;
 }

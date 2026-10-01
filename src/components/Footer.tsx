@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { COMPANY_INFO, SERVICES, SAFARI_DESTINATIONS } from '@/data/content';
 import { getWhatsAppUrl } from '@/utils/whatsapp';
 import { MapPinIcon, PhoneIcon, WhatsAppIcon, MailIcon, ArrowRightIcon } from './Icons';
@@ -16,18 +17,14 @@ export const Footer: React.FC = () => {
           
           {/* Column 1: Brand & Identity */}
           <div className="lg:col-span-4 space-y-4">
-            <Link href="#home" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#F3A81D] to-[#B87103] flex items-center justify-center font-black text-black text-xl shadow-md shadow-[#F3A81D]/20">
-                ER
-              </div>
-              <div className="flex flex-col">
-                <span className="text-white font-black tracking-wider text-base leading-tight">
-                  EXPRESS RIDE &amp;
-                </span>
-                <span className="text-[#F3A81D] font-bold text-xs tracking-widest uppercase">
-                  SAFARIS KENYA
-                </span>
-              </div>
+            <Link href="#home" className="inline-block group">
+              <Image
+                src="/logo.png"
+                alt="Express Ride & Safaris Kenya"
+                width={220}
+                height={90}
+                className="h-12 sm:h-14 md:h-16 w-auto object-contain group-hover:scale-105 transition-transform"
+              />
             </Link>
 
             <p className="text-xs text-gray-400 font-semibold tracking-wider uppercase">

@@ -3,5 +3,5 @@ User-agent: *
 Allow: /
 
 # Host & Sitemap
-Host: https://expressrideandsafaris.co.ke
-Sitemap: https://expressrideandsafaris.co.ke/sitemap.xml
+Host: https://www.express-ride-and-safari.co.ke
+Sitemap: https://www.express-ride-and-safari.co.ke/sitemap.xml

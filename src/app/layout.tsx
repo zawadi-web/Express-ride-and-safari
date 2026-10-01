@@ -18,19 +18,40 @@ export const metadata: Metadata = {
     'Diani beach tours',
   ],
   authors: [{ name: 'Express Ride & Safaris Kenya' }],
-  metadataBase: new URL('https://express-ride-and-safari.co.ke'),
+  metadataBase: new URL('https://www.express-ride-and-safari.co.ke'),
+  alternates: {
+    canonical: 'https://www.express-ride-and-safari.co.ke',
+  },
   openGraph: {
     title: 'Express Ride & Safaris Kenya | Car Hire, Safaris & Tours',
     description:
       'Reliable car hire, airport transfers, and tailor-made safari tours across Mombasa and Nairobi, Kenya.',
-    url: 'https://express-ride-and-safari.co.ke',
+    url: 'https://www.express-ride-and-safari.co.ke',
     siteName: 'Express Ride & Safaris Kenya',
     locale: 'en_KE',
     type: 'website',
+    images: [
+      {
+        url: '/logo.png',
+        width: 1024,
+        height: 474,
+        alt: 'Express Ride & Safaris Kenya',
+      },
+    ],
   },
   icons: {
-    icon: '/icon.svg',
-    apple: '/icon.svg',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon-48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/icon.png', sizes: '192x192', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '',
   },
 };
 
