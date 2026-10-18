@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { COMPANY_INFO, SERVICES, SAFARI_DESTINATIONS } from '@/data/content';
+import { COMPANY_INFO, SERVICES } from '@/data/content';
 import { getWhatsAppUrl } from '@/utils/whatsapp';
 import { MapPinIcon, PhoneIcon, WhatsAppIcon, MailIcon, ArrowRightIcon } from './Icons';
 
@@ -9,127 +9,64 @@ export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#07090D] text-white border-t border-[#181D26] pt-16 pb-28 md:pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#1A1F2C]">
-          
-          {/* Column 1: Brand & Identity */}
-          <div className="lg:col-span-4 space-y-4">
+    <footer className="border-t border-[#0d2d30]/10 bg-[#071b1e] text-[#e6eff0]">
+      <div className="mx-auto max-w-7xl px-4 pb-28 pt-16 sm:px-6 lg:px-8 md:pb-16">
+        <div className="grid grid-cols-1 gap-10 border-b border-[#1f3a3d] pb-12 md:grid-cols-2 lg:grid-cols-12">
+          <div className="space-y-4 lg:col-span-4">
             <Link href="#home" className="inline-block group">
               <Image
                 src="/logo.png"
                 alt="Express Ride & Safaris Kenya"
                 width={220}
                 height={90}
-                className="h-12 sm:h-14 md:h-16 w-auto object-contain group-hover:scale-105 transition-transform"
+                className="h-12 w-auto object-contain transition-transform group-hover:scale-[1.02] md:h-14"
               />
             </Link>
 
-            <p className="text-xs text-gray-400 font-semibold tracking-wider uppercase">
-              Car Hire &amp; Rentals | Safaris | Tours &amp; Travel
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#d8ef76]">
+              Car Hire • Safaris • Tours &amp; Travel
             </p>
 
-            <p className="text-xs text-gray-400 leading-relaxed max-w-sm font-normal">
-              Reliable car hire, self-drive rentals, chauffeur services, private airport transfers, and tailor-made safari tours across Mombasa, Nairobi and wider Kenya.
+            <p className="max-w-sm text-sm leading-7 text-[#c3d7d7]">
+              Reliable journeys across Kenya, from private airport transfers and chauffeur-led travel to curated coastal escapes and safari adventures.
             </p>
 
-            {/* Editable Social Links */}
             <div className="pt-2">
-              <span className="text-[11px] uppercase tracking-wider text-gray-400 block mb-2 font-semibold">
-                Connect With Us
-              </span>
+              <span className="mb-3 block text-[10px] font-bold uppercase tracking-[0.18em] text-[#8ea5a5]">Connect with us</span>
               <div className="flex items-center gap-2.5">
-                <a
-                  href={getWhatsAppUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg bg-[#121620] border border-[#212836] flex items-center justify-center text-gray-400 hover:text-[#25D366] hover:border-[#25D366]/40 transition-colors"
-                  aria-label="Official WhatsApp"
-                >
+                <a href={getWhatsAppUrl()} target="_blank" rel="noreferrer" className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#1f3a3d] bg-[#0d2d30] text-[#25D366] transition-colors hover:border-[#25D366]/40" aria-label="Official WhatsApp">
                   <WhatsAppIcon className="w-4 h-4" />
                 </a>
-                <a
-                  href={`tel:${COMPANY_INFO.phones[0]}`}
-                  className="w-9 h-9 rounded-lg bg-[#121620] border border-[#212836] flex items-center justify-center text-gray-400 hover:text-[#F3A81D] hover:border-[#F3A81D]/40 transition-colors"
-                  aria-label="Direct Phone Line"
-                >
+                <a href={`tel:${COMPANY_INFO.phones[0]}`} className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#1f3a3d] bg-[#0d2d30] text-[#d8ef76] transition-colors hover:border-[#d8ef76]/40" aria-label="Direct phone line">
                   <PhoneIcon className="w-4 h-4" />
                 </a>
-                {/* Editable social channel placeholders */}
-                <a
-                  href="#contact"
-                  className="w-9 h-9 rounded-lg bg-[#121620] border border-[#212836] flex items-center justify-center text-gray-400 hover:text-white hover:border-gray-500 transition-colors text-xs font-bold"
-                  title="Official social channel placeholder"
-                >
-                  FB
-                </a>
-                <a
-                  href="#contact"
-                  className="w-9 h-9 rounded-lg bg-[#121620] border border-[#212836] flex items-center justify-center text-gray-400 hover:text-white hover:border-gray-500 transition-colors text-xs font-bold"
-                  title="Official social channel placeholder"
-                >
-                  IG
+                <a href={`mailto:${COMPANY_INFO.email}`} className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#1f3a3d] bg-[#0d2d30] text-[#cfe85e] transition-colors hover:border-[#cfe85e]/40" aria-label="Email us">
+                  <MailIcon className="w-4 h-4" />
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
-          <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#F3A81D]">
-              Quick Links
-            </h4>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <a href="#home" className="text-gray-400 hover:text-white transition-colors">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#cars" className="text-gray-400 hover:text-white transition-colors">
-                  Car Hire
-                </a>
-              </li>
-              <li>
-                <a href="#safaris" className="text-gray-400 hover:text-white transition-colors">
-                  Safaris
-                </a>
-              </li>
-              <li>
-                <a href="#transfers" className="text-gray-400 hover:text-white transition-colors">
-                  Airport Transfers
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-gray-400 hover:text-white transition-colors">
-                  Tours &amp; Travel
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="text-gray-400 hover:text-white transition-colors">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-gray-400 hover:text-white transition-colors">
-                  Contact
-                </a>
-              </li>
+          <div className="space-y-3 lg:col-span-2">
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#d8ef76]">Quick links</h4>
+            <ul className="space-y-2 text-sm text-[#cedee0]">
+              <li><a href="#home" className="transition-colors hover:text-white">Home</a></li>
+              <li><a href="#cars" className="transition-colors hover:text-white">Car Hire</a></li>
+              <li><a href="#safaris" className="transition-colors hover:text-white">Safaris</a></li>
+              <li><a href="#transfers" className="transition-colors hover:text-white">Airport Transfers</a></li>
+              <li><a href="#services" className="transition-colors hover:text-white">Tours &amp; Travel</a></li>
+              <li><a href="#about" className="transition-colors hover:text-white">About</a></li>
+              <li><a href="#contact" className="transition-colors hover:text-white">Contact</a></li>
             </ul>
           </div>
 
-          {/* Column 3: Services */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#F3A81D]">
-              Our Services
-            </h4>
-            <ul className="space-y-2 text-xs">
+          <div className="space-y-3 lg:col-span-3">
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#d8ef76]">Our services</h4>
+            <ul className="space-y-2 text-sm text-[#cedee0]">
               {SERVICES.map((srv) => (
                 <li key={srv.id}>
-                  <a href="#services" className="text-gray-400 hover:text-white transition-colors flex items-center gap-1.5">
-                    <span className="text-[#F3A81D]">&rsaquo;</span>
+                  <a href="#services" className="flex items-center gap-2 transition-colors hover:text-white">
+                    <span className="text-[#d8ef76]">›</span>
                     <span>{srv.title}</span>
                   </a>
                 </li>
@@ -137,89 +74,50 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Column 4: Locations & Contacts */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#F3A81D]">
-              Contact Details
-            </h4>
-            
-            <div className="space-y-3 text-xs text-gray-300">
+          <div className="space-y-4 lg:col-span-3">
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#d8ef76]">Contact details</h4>
+
+            <div className="space-y-3 text-sm text-[#cedee0]">
               <div className="flex items-start gap-2.5">
-                <MapPinIcon className="w-4 h-4 text-[#F3A81D] shrink-0 mt-0.5" />
+                <MapPinIcon className="mt-0.5 h-4 w-4 shrink-0 text-[#d8ef76]" />
                 <div>
-                  <span className="font-semibold text-white block">Head Office &amp; Coverage</span>
-                  <span className="text-gray-300 font-medium">Bamburi Fisheries, Mombasa (HQ)</span>
-                  <span className="text-gray-500 block text-[11px]">Coast Resorts &bull; Nairobi Hub</span>
+                  <span className="block font-semibold text-white">Head Office</span>
+                  <span>Bamburi Fisheries, Mombasa</span>
                 </div>
               </div>
 
               <div className="flex items-start gap-2.5">
-                <MailIcon className="w-4 h-4 text-[#F3A81D] shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-semibold text-white block">Official Email</span>
-                  <a
-                    href={`mailto:${COMPANY_INFO.email}`}
-                    className="text-gray-300 hover:text-[#F3A81D] transition-colors break-all"
-                  >
-                    {COMPANY_INFO.email}
-                  </a>
+                <MailIcon className="mt-0.5 h-4 w-4 shrink-0 text-[#d8ef76]" />
+                <a href={`mailto:${COMPANY_INFO.email}`} className="break-all text-[#cedee0] transition-colors hover:text-white">
+                  {COMPANY_INFO.email}
+                </a>
+              </div>
+
+              <div className="flex items-start gap-2.5">
+                <PhoneIcon className="mt-0.5 h-4 w-4 shrink-0 text-[#d8ef76]" />
+                <div className="flex flex-col gap-1">
+                  <a href={`tel:${COMPANY_INFO.phones[0]}`} className="transition-colors hover:text-white">{COMPANY_INFO.phones[0]}</a>
+                  <a href={`tel:${COMPANY_INFO.phones[1]}`} className="transition-colors hover:text-white">{COMPANY_INFO.phones[1]}</a>
                 </div>
               </div>
 
               <div className="flex items-start gap-2.5">
-                <PhoneIcon className="w-4 h-4 text-[#F3A81D] shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-semibold text-white block">Phone Lines</span>
-                  <div className="flex flex-col gap-0.5 text-gray-400">
-                    <a href={`tel:${COMPANY_INFO.phones[0]}`} className="hover:text-white transition-colors">
-                      {COMPANY_INFO.phones[0]}
-                    </a>
-                    <a href={`tel:${COMPANY_INFO.phones[1]}`} className="hover:text-white transition-colors">
-                      {COMPANY_INFO.phones[1]}
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-2.5">
-                <WhatsAppIcon className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-semibold text-white block">WhatsApp</span>
-                  <a
-                    href={getWhatsAppUrl()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#25D366] hover:underline"
-                  >
-                    {COMPANY_INFO.whatsappPhone}
-                  </a>
-                </div>
+                <WhatsAppIcon className="mt-0.5 h-4 w-4 shrink-0 text-[#25D366]" />
+                <a href={getWhatsAppUrl()} target="_blank" rel="noreferrer" className="text-[#25D366] transition-colors hover:underline">{COMPANY_INFO.whatsappPhone}</a>
               </div>
             </div>
 
-            <div className="pt-2">
-              <a
-                href="#contact"
-                className="w-full inline-flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-[#181E2B] hover:bg-[#202738] border border-[#273245] text-xs font-semibold text-gray-200 transition-colors"
-              >
-                <span>Make a Direct Reservation</span>
-                <ArrowRightIcon className="w-3.5 h-3.5 text-[#F3A81D]" />
-              </a>
-            </div>
+            <a href="#contact" className="inline-flex items-center gap-2 rounded-xl border border-[#1f3a3d] bg-[#0d2d30] px-4 py-2.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#f7f4ee] transition-colors hover:border-[#d8ef76]/40">
+              <span>Direct reservation</span>
+              <ArrowRightIcon className="w-3.5 h-3.5 text-[#d8ef76]" />
+            </a>
           </div>
-
         </div>
 
-        {/* Bottom Bar: Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-4">
-          <p>
-            &copy; {currentYear} {COMPANY_INFO.name}. All rights reserved.
-          </p>
-          <p className="text-gray-400">
-            Head Office: Bamburi Fisheries, Mombasa &bull; Nairobi Hub &bull; Kenya
-          </p>
+        <div className="flex flex-col items-center justify-between gap-4 pt-8 text-xs text-[#9cb0b1] sm:flex-row">
+          <p>&copy; {currentYear} {COMPANY_INFO.name}. All rights reserved.</p>
+          <p>Head Office: Bamburi Fisheries, Mombasa • Nairobi Hub • Kenya</p>
         </div>
-
       </div>
     </footer>
   );

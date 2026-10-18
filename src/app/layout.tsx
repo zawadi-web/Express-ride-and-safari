@@ -1,10 +1,14 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { MAINTENANCE_MODE } from '@/config/maintenance';
 
 export const metadata: Metadata = {
-  title: 'Express Ride & Safaris Kenya | Car Hire, Safaris & Tours',
-  description:
-    'Express Ride & Safaris Kenya offers car hire, chauffeur services, airport transfers, safari experiences and tours across Kenya.',
+  title: MAINTENANCE_MODE
+    ? 'Express Ride & Safari | Maintenance'
+    : 'Express Ride & Safaris Kenya | Car Hire, Safaris & Tours',
+  description: MAINTENANCE_MODE
+    ? "We're taking a little time to improve your experience. Express Ride & Safari will be back soon, ready to get you where you need to go."
+    : 'Express Ride & Safaris Kenya offers car hire, chauffeur services, airport transfers, safari experiences and tours across Kenya.',
   keywords: [
     'Car hire Kenya',
     'Car rental Mombasa',
@@ -62,7 +66,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen bg-white text-slate-900 antialiased selection:bg-[#F59E0B] selection:text-black">
+      <body className={`min-h-screen antialiased ${MAINTENANCE_MODE ? 'bg-[#0A0A0B] text-[#F5F2EB]' : 'bg-white text-slate-900 selection:bg-[#F59E0B] selection:text-black'}`}>
         {children}
       </body>
     </html>

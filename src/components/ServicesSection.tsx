@@ -15,96 +15,82 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
   const getIcon = (name: string) => {
     switch (name) {
       case 'car':
-        return <CarIcon className="w-6 h-6 text-[#D97706]" />;
+        return <CarIcon className="w-6 h-6 text-[#1d6d68]" />;
       case 'user-check':
-        return <UserCheckIcon className="w-6 h-6 text-[#D97706]" />;
+        return <UserCheckIcon className="w-6 h-6 text-[#1d6d68]" />;
       case 'compass':
-        return <CompassIcon className="w-6 h-6 text-[#D97706]" />;
+        return <CompassIcon className="w-6 h-6 text-[#1d6d68]" />;
       case 'plane':
-        return <PlaneIcon className="w-6 h-6 text-[#D97706]" />;
+        return <PlaneIcon className="w-6 h-6 text-[#1d6d68]" />;
       case 'map':
       default:
-        return <MapIcon className="w-6 h-6 text-[#D97706]" />;
+        return <MapIcon className="w-6 h-6 text-[#1d6d68]" />;
     }
   };
 
   return (
-    <section id="services" className="py-20 text-slate-900 border-b border-slate-200/60 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 backdrop-blur-sm border border-amber-200 text-xs font-bold uppercase tracking-wider text-[#D97706] mb-4 shadow-xs">
-            Services &amp; Solutions
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 mb-4">
-            Travel Your Way
-          </h2>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-            Flexible transport and travel services designed around your journey.
+    <section id="services" className="relative border-b border-[#0d2d30]/10 py-20">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(31,109,104,0.08),_transparent_28%)]" />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-14 max-w-3xl text-center">
+          <div className="section-kicker mx-auto mb-5">Services &amp; Solutions</div>
+          <h2 className="section-title mb-4">Travel your way.</h2>
+          <p className="section-copy mx-auto max-w-2xl text-base sm:text-lg">
+            Flexible transport and travel services designed around the pace, comfort and route that fit your journey.
           </p>
         </div>
 
-        {/* 5 Service Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service: Service, index: number) => {
             const isFeatured = index === 0 || index === 2;
             return (
-              <div
+              <article
                 key={service.id}
-                className={`flex flex-col justify-between rounded-2xl bg-white/95 backdrop-blur-md border transition-all duration-300 overflow-hidden group hover:-translate-y-1.5 shadow-sm hover:shadow-xl ${
-                  isFeatured ? 'border-amber-200/80 ring-1 ring-amber-100' : 'border-slate-200/80'
-                } hover:border-amber-400`}
+                className={`section-shell group flex flex-col justify-between overflow-hidden rounded-[1.8rem] ${
+                  isFeatured ? 'border-[#1d6d68]/15 shadow-[0_24px_50px_rgba(10,30,33,0.08)]' : ''
+                }`}
               >
-                {/* Photo banner */}
-                <div className="relative w-full h-48 overflow-hidden bg-slate-100">
+                <div className="relative h-52 overflow-hidden bg-slate-100">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  
-                  {/* Icon badge */}
-                  <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur-md border border-slate-100 flex items-center justify-center shadow-md">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071b1e]/75 via-transparent to-transparent" />
+
+                  <div className="absolute left-4 top-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-[#0d2d30]/10 bg-white/80 shadow-[0_12px_25px_rgba(7,27,30,0.08)] backdrop-blur-sm">
                     {getIcon(service.iconName)}
                   </div>
 
-                  <div className="absolute bottom-3 right-4">
-                    <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-black/65 text-white backdrop-blur-sm border border-white/20">
-                      {service.tagline}
-                    </span>
+                  <div className="absolute bottom-4 right-4 rounded-full border border-white/20 bg-[#071b1e]/70 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#d8ef76] backdrop-blur-md">
+                    {service.tagline}
                   </div>
                 </div>
 
-                {/* Card Content */}
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2 tracking-tight group-hover:text-[#D97706] transition-colors">
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="mb-5 flex-1">
+                    <h3 className="mb-2 text-2xl font-black tracking-[-0.04em] text-[#0d252a] group-hover:text-[#1d6d68] transition-colors">
                       {service.title}
                     </h3>
-                    <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
-                      {service.description}
-                    </p>
+                    <p className="mb-5 text-sm leading-7 text-[#34545d]">{service.description}</p>
 
-                    {/* Features list */}
-                    <ul className="space-y-2.5 mb-6 text-xs text-slate-700">
+                    <ul className="space-y-2.5 text-xs leading-6 text-[#1b3e46]">
                       {service.features.map((feature, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <CheckIcon className="w-4 h-4 text-[#D97706] shrink-0 mt-0.5" />
+                          <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-[#1d6d68]" />
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* Actions */}
-                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+                  <div className="flex items-center justify-between gap-3 border-t border-[#0d2d30]/10 pt-4">
                     <button
-                      onClick={() => onSelectService ? onSelectService(service.title) : window.location.assign('#contact')}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-900 hover:text-[#D97706] transition-colors cursor-pointer"
+                      onClick={() => (onSelectService ? onSelectService(service.title) : window.location.assign('#contact'))}
+                      className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.12em] text-[#0d252a] transition-colors hover:text-[#1d6d68]"
                     >
                       <span>Inquire Now</span>
                       <ArrowRightIcon className="w-3.5 h-3.5" />
@@ -114,18 +100,17 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
                       href={getWhatsAppUrl(`Hello Express Ride & Safaris Kenya, I would like to inquire about your ${service.title} service.`)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 text-xs font-semibold transition-all"
+                      className="inline-flex items-center gap-2 rounded-xl border border-[#25D366]/25 bg-[#ecfbf0] px-3 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#0d3b31]"
                     >
-                      <WhatsAppIcon className="w-3.5 h-3.5" />
-                      <span>WhatsApp</span>
+                      <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
+                      WhatsApp
                     </a>
                   </div>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
-
       </div>
     </section>
   );

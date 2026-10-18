@@ -24,46 +24,38 @@ export const VehicleSection: React.FC<VehicleSectionProps> = ({ onSelectVehicle 
     'Commercial',
   ];
 
-  const filteredVehicles = selectedCategory === 'All'
-    ? VEHICLES
-    : VEHICLES.filter((v) => v.category === selectedCategory);
+  const filteredVehicles = selectedCategory === 'All' ? VEHICLES : VEHICLES.filter((v) => v.category === selectedCategory);
 
   return (
-    <section id="cars" className="py-20 text-slate-900 border-b border-slate-200/60 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+    <section id="cars" className="relative border-b border-[#0d2d30]/10 py-20">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(191,228,80,0.09),_transparent_18%)]" />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 backdrop-blur-sm border border-amber-200 text-xs font-bold uppercase tracking-wider text-[#D97706] mb-3 shadow-xs">
-              Fleet &amp; Rentals
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 mb-3">
-              Find the Right Ride
-            </h2>
-            <p className="text-base sm:text-lg text-slate-600">
-              Comfortable and reliable vehicles for everyday travel, business trips and adventures.
+            <div className="section-kicker mb-4">Fleet &amp; Rentals</div>
+            <h2 className="section-title mb-3">Find the right ride.</h2>
+            <p className="section-copy text-base sm:text-lg">
+              Comfortable, reliable vehicles for daily travel, business routes and unforgettable Kenyan journeys.
             </p>
           </div>
 
-          {/* Location note */}
-          <div className="text-xs text-slate-600 bg-white/90 backdrop-blur-md border border-slate-200 px-4 py-2.5 rounded-xl self-start md:self-auto shadow-xs">
-            Available in: <span className="text-[#D97706] font-bold">Mombasa &amp; Nairobi</span>
+          <div className="self-start rounded-2xl border border-[#0d2d30]/10 bg-white/75 px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#1a3a40] shadow-[0_12px_25px_rgba(6,24,28,0.04)] md:self-auto">
+            Available in <span className="font-black text-[#0d252a]">Mombasa &amp; Nairobi</span>
           </div>
         </div>
 
-        {/* Category Filter Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar">
+        <div className="mb-10 flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
           {categories.map((cat) => {
             const isActive = selectedCategory === cat;
             return (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                className={`whitespace-nowrap rounded-xl px-5 py-2.5 text-xs font-black uppercase tracking-[0.12em] transition-all duration-200 ${
                   isActive
-                    ? 'bg-[#F59E0B] text-black shadow-md shadow-[#F59E0B]/25'
-                    : 'bg-white/90 text-slate-700 hover:text-black hover:bg-slate-50 border border-slate-200 shadow-xs'
+                    ? 'bg-[#0d252a] text-[#f7f4ee] shadow-[0_18px_32px_rgba(13,37,42,0.15)]'
+                    : 'border border-[#0d2d30]/10 bg-white/80 text-[#12363c] hover:border-[#0d2d30]/15 hover:bg-[#edf3f1]'
                 }`}
               >
                 {cat === 'All' ? 'All Vehicles' : cat}
@@ -72,123 +64,94 @@ export const VehicleSection: React.FC<VehicleSectionProps> = ({ onSelectVehicle 
           })}
         </div>
 
-        {/* Vehicle Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredVehicles.map((vehicle: Vehicle) => {
-            return (
-              <div
-                key={vehicle.id}
-                className="rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 overflow-hidden flex flex-col justify-between hover:border-amber-400 hover:shadow-xl transition-all duration-300 group shadow-sm"
-              >
-                {/* Vehicle Image Container */}
-                <div className="relative w-full h-56 bg-slate-100 overflow-hidden">
-                  <Image
-                    src={vehicle.image}
-                    alt={vehicle.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {filteredVehicles.map((vehicle: Vehicle) => (
+            <article key={vehicle.id} className="section-shell group flex flex-col overflow-hidden rounded-[1.8rem]">
+              <div className="relative h-60 overflow-hidden bg-slate-100">
+                <Image
+                  src={vehicle.image}
+                  alt={vehicle.name}
+                  fill
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#071b1e]/70 via-transparent to-transparent" />
 
-                  {/* Category Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-black/70 backdrop-blur-md text-white border border-white/20">
-                      {vehicle.category}
-                    </span>
-                  </div>
-
-                  {vehicle.popular && (
-                    <div className="absolute top-4 right-4">
-                      <span className="px-2.5 py-1 rounded-md text-[11px] font-extrabold uppercase tracking-wider bg-[#F59E0B] text-black shadow">
-                        Popular Choice
-                      </span>
-                    </div>
-                  )}
+                <div className="absolute left-4 top-4 rounded-full border border-white/15 bg-[#071b1e]/70 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#f7f4ee] backdrop-blur-md">
+                  {vehicle.category}
                 </div>
 
-                {/* Card Body */}
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-[#D97706] transition-colors">
-                      {vehicle.name}
-                    </h3>
-                    
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 font-normal">
-                      {vehicle.description}
-                    </p>
+                {vehicle.popular && (
+                  <div className="absolute right-4 top-4 rounded-full bg-[#cfe85e] px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-[#071b1e]">
+                    Popular
+                  </div>
+                )}
+              </div>
 
-                    {/* Specifications Row */}
-                    <div className="grid grid-cols-3 gap-2 py-3 px-3 rounded-xl bg-slate-50 border border-slate-200 mb-6 text-center">
-                      <div className="flex flex-col items-center justify-center gap-1">
-                        <UsersIcon className="w-4 h-4 text-[#D97706]" />
-                        <span className="text-[11px] text-slate-500 font-medium">Seats</span>
-                        <span className="text-xs font-bold text-slate-900">{vehicle.seats}</span>
-                      </div>
+              <div className="flex flex-1 flex-col p-6">
+                <div className="mb-5 flex-1">
+                  <h3 className="mb-2 text-2xl font-black tracking-[-0.04em] text-[#0d252a] group-hover:text-[#1d6d68] transition-colors">
+                    {vehicle.name}
+                  </h3>
+                  <p className="mb-5 text-sm leading-7 text-[#34545d]">{vehicle.description}</p>
 
-                      <div className="flex flex-col items-center justify-center gap-1 border-x border-slate-200">
-                        <Settings2Icon className="w-4 h-4 text-[#D97706]" />
-                        <span className="text-[11px] text-slate-500 font-medium">Gearbox</span>
-                        <span className="text-xs font-bold text-slate-900">{vehicle.transmission}</span>
-                      </div>
-
-                      <div className="flex flex-col items-center justify-center gap-1">
-                        <FuelIcon className="w-4 h-4 text-[#D97706]" />
-                        <span className="text-[11px] text-slate-500 font-medium">Fuel</span>
-                        <span className="text-xs font-bold text-slate-900">{vehicle.fuelType}</span>
-                      </div>
+                  <div className="mb-5 grid grid-cols-3 gap-2 rounded-2xl border border-[#0d2d30]/10 bg-[#f4f9f8] p-3 text-center">
+                    <div className="flex flex-col items-center justify-center gap-1">
+                      <UsersIcon className="w-4 h-4 text-[#1d6d68]" />
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#547e82]">Seats</span>
+                      <span className="text-sm font-black text-[#0d252a]">{vehicle.seats}</span>
                     </div>
-
-                    {/* Key features chips */}
-                    <div className="flex flex-wrap gap-1.5 mb-6">
-                      {vehicle.features.map((feat, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2.5 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700 border border-slate-200"
-                        >
-                          {feat}
-                        </span>
-                      ))}
+                    <div className="flex flex-col items-center justify-center gap-1 border-x border-[#0d2d30]/10">
+                      <Settings2Icon className="w-4 h-4 text-[#1d6d68]" />
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#547e82]">Gear</span>
+                      <span className="text-sm font-black text-[#0d252a]">{vehicle.transmission}</span>
+                    </div>
+                    <div className="flex flex-col items-center justify-center gap-1">
+                      <FuelIcon className="w-4 h-4 text-[#1d6d68]" />
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#547e82]">Fuel</span>
+                      <span className="text-sm font-black text-[#0d252a]">{vehicle.fuelType}</span>
                     </div>
                   </div>
 
-                  {/* Actions CTA */}
-                  <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-stretch gap-2.5">
-                    <button
-                      onClick={() => onSelectVehicle ? onSelectVehicle(vehicle) : window.location.assign('#contact')}
-                      className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[#F59E0B] hover:bg-[#D97706] text-black font-extrabold text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-sm"
-                    >
-                      <span>Request This Vehicle</span>
-                      <ArrowRightIcon className="w-3.5 h-3.5" />
-                    </button>
-
-                    <a
-                      href={getVehicleWhatsAppUrl(vehicle.name, vehicle.category)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 py-2.5 px-3.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 text-xs font-bold transition-all"
-                      title="Quick inquiry via WhatsApp"
-                    >
-                      <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
-                      <span className="sm:hidden">WhatsApp</span>
-                    </a>
+                  <div className="flex flex-wrap gap-1.5">
+                    {vehicle.features.map((feat, idx) => (
+                      <span key={idx} className="rounded-full border border-[#0d2d30]/10 bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#1a3a40]">
+                        {feat}
+                      </span>
+                    ))}
                   </div>
+                </div>
 
+                <div className="flex items-stretch gap-2 border-t border-[#0d2d30]/10 pt-4">
+                  <button
+                    onClick={() => (onSelectVehicle ? onSelectVehicle(vehicle) : window.location.assign('#contact'))}
+                    className="premium-button flex-1 px-3 py-3 text-[10px]"
+                  >
+                    <span>Request</span>
+                    <ArrowRightIcon className="w-3.5 h-3.5" />
+                  </button>
+
+                  <a
+                    href={getVehicleWhatsAppUrl(vehicle.name, vehicle.category)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center rounded-xl border border-[#25D366]/25 bg-[#ecfbf0] px-3 text-[#0d3b31]"
+                    title="Quick inquiry via WhatsApp"
+                  >
+                    <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
+                  </a>
                 </div>
               </div>
-            );
-          })}
+            </article>
+          ))}
         </div>
 
-        {/* Fleet Footnote */}
-        <div className="mt-12 text-center text-xs text-slate-500 font-medium">
-          Looking for a specific model not listed here? Call{' '}
-          <a href="tel:0793612412" className="text-slate-900 hover:text-[#D97706] underline font-bold">0793612412</a>
-          {' '}or{' '}
-          <a href="tel:0748769876" className="text-slate-900 hover:text-[#D97706] underline font-bold">0748769876</a>
-          {' '}for custom fleet bookings and availability.
+        <div className="mt-12 text-center text-xs font-medium uppercase tracking-[0.12em] text-[#527178]">
+          Need a specific model? Call{' '}
+          <a href="tel:0793612412" className="text-[#0d252a] underline">0793612412</a>{' '}
+          or{' '}
+          <a href="tel:0748769876" className="text-[#0d252a] underline">0748769876</a>
         </div>
-
       </div>
     </section>
   );
