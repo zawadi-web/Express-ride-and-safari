@@ -90,41 +90,53 @@ export function MaintenancePage() {
         </div>
 
         {/* Contact / Inquiries Section */}
-        <section className="mt-8 flex flex-col items-center w-full max-w-md" aria-label="Contact">
-          <p className="text-xs sm:text-sm text-[#968F81] mb-3.5 font-medium">
-            Need a ride or planning your next safari? Get in touch.
+        <section className="mt-8 flex flex-col items-center w-full max-w-md" aria-label="Direct Business Inquiries">
+          <p className="text-xs sm:text-sm text-[#c8c0b0] mb-4 font-medium">
+            Bookings, airport transfers &amp; safaris remain open via direct hotline:
           </p>
 
-          {/* Prominent & Tasteful Developer CTA */}
-          <a
-            href="https://giftmukhwana.co.ke/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-[#141416] hover:bg-[#1C1C1F] border border-[#3E382E] hover:border-amber-400/60 text-[#F5F2EB] text-xs sm:text-sm font-medium transition-all duration-300 shadow-xl shadow-black/60 hover:shadow-amber-950/30 focus:outline-none focus:ring-2 focus:ring-amber-400/60 focus:ring-offset-2 focus:ring-offset-[#0A0A0B]"
-          >
-            <span>Contact the Developer</span>
-            <span
-              className="text-amber-400 font-semibold group-hover:translate-x-1 transition-transform duration-300"
-              aria-hidden="true"
+          {/* Primary Business Contact Buttons */}
+          <div className="flex flex-col sm:flex-row items-center gap-3 w-full mb-4">
+            <a
+              href="https://wa.me/254748769876?text=Hello%20Express%20Ride%20%26%20Safari%2C%20I%20would%20like%20to%20inquire%20about%20car%20hire%20and%20safari%20bookings"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:flex-1 inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/40 text-[#54f08c] text-xs sm:text-sm font-bold tracking-wide transition-all shadow-lg shadow-black/40"
             >
-              →
-            </span>
-          </a>
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z" />
+              </svg>
+              <span>WhatsApp Inquiry</span>
+            </a>
 
-          {/* Discreet Domain Display */}
-          <a
-            href="https://giftmukhwana.co.ke/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 text-[11px] sm:text-xs text-[#7A7468] hover:text-amber-300/80 transition-colors tracking-wider font-mono"
-            aria-label="Developer official website: giftmukhwana.co.ke"
-          >
-            giftmukhwana.co.ke
-          </a>
+            <a
+              href="tel:0748769876"
+              className="w-full sm:flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-200 text-xs sm:text-sm font-bold tracking-wide transition-all shadow-lg shadow-black/40"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <span>0748 769 876</span>
+            </a>
+          </div>
 
-          <p className="mt-2 text-[10px] text-[#635E54] tracking-wide">
-            For website engineering &amp; technical assistance
-          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-[#A69E8F] mb-6">
+            <span>Alt Hotline: <a href="tel:0793612412" className="text-amber-300 hover:underline font-semibold">0793 612 412</a></span>
+            <span className="opacity-40">•</span>
+            <a href="mailto:expressridesandsafaris@gmail.com" className="text-amber-300 hover:underline">expressridesandsafaris@gmail.com</a>
+          </div>
+
+          {/* Secondary Developer Technical Attribution */}
+          <div className="pt-4 border-t border-[#3E382E]/50 flex flex-col items-center">
+            <a
+              href="https://giftmukhwana.co.ke/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[11px] text-[#7A7468] hover:text-amber-300 transition-colors tracking-wide"
+            >
+              Site Engineering by <span className="underline decoration-amber-500/40 font-medium">Gift Mukhwana</span>
+            </a>
+          </div>
         </section>
       </main>
 

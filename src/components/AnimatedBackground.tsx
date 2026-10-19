@@ -12,27 +12,27 @@ interface FeaturedItem {
 
 const FEATURED_SHOWCASE: FeaturedItem[] = [
   { name: 'Toyota Prado TX J150', tag: 'Premium 4WD', image: '/images/cars/toyota-prado.jpg', type: 'car' },
-  { name: 'Maasai Mara Game Drive', tag: 'Big Five Safari', image: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=80', type: 'safari' },
+  { name: 'Maasai Mara Game Drive', tag: 'Big Five Safari', image: '/images/savanna-safari.jpg', type: 'safari' },
   { name: 'Mazda CX-5', tag: 'Executive Crossover', image: '/images/cars/mazda-cx5.jpg', type: 'car' },
-  { name: 'Amboseli & Kilimanjaro', tag: 'Elephant Sanctuary', image: 'https://images.unsplash.com/photo-1534177616072-ef7dc120449d?auto=format&fit=crop&w=1200&q=80', type: 'safari' },
+  { name: 'Amboseli & Kilimanjaro', tag: 'Elephant Sanctuary', image: '/images/cars/land-cruiser-tour.jpg', type: 'safari' },
   { name: 'Toyota Harrier', tag: 'Luxury Highway Crossover', image: '/images/cars/toyota-harrier.jpg', type: 'car' },
-  { name: 'Diani Beach Coast', tag: 'Mombasa Coastal Drive', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80', type: 'coast' },
+  { name: 'Diani Beach Coast', tag: 'Mombasa Coastal Drive', image: '/images/coastal-drive.jpg', type: 'coast' },
   { name: 'Toyota Alphard VIP', tag: 'First-Class Passenger Van', image: '/images/cars/toyota-alphard.jpg', type: 'car' },
   { name: 'Safari 4x4 Land Cruiser', tag: 'Pop-Up Roof Expedition', image: '/images/cars/land-cruiser-tour.jpg', type: 'safari' },
   { name: 'Nissan Note e-POWER', tag: 'Hybrid City Efficiency', image: '/images/cars/nissan-note.jpg', type: 'car' },
   { name: 'Toyota Fielder', tag: 'Reliable Touring Wagon', image: '/images/cars/toyota-fielder.jpg', type: 'car' },
-  { name: 'Tsavo National Reserve', tag: 'Kenya Wilderness', image: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1200&q=80', type: 'safari' },
+  { name: 'Tsavo & Coastal Routes', tag: 'Kenya Wilderness', image: '/images/maintenance-bg.jpg', type: 'safari' },
   { name: 'Toyota Vitz', tag: 'Agile City Runner', image: '/images/cars/toyota-vitz.jpg', type: 'car' },
 ];
 
 // Key full-bleed scenes mapped across scroll positions
 const SCROLL_SCENES = [
   { image: '/images/cars/toyota-prado.jpg', title: 'Executive Fleet' },
-  { image: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1800&q=80', title: 'Savannah Wildlife' },
+  { image: '/images/savanna-safari.jpg', title: 'Savannah Wildlife' },
   { image: '/images/cars/mazda-cx5.jpg', title: 'Urban & Highway SUV' },
-  { image: 'https://images.unsplash.com/photo-1534177616072-ef7dc120449d?auto=format&fit=crop&w=1800&q=80', title: 'Amboseli Elephants' },
+  { image: '/images/maintenance-bg.jpg', title: 'Great Rift & Open Horizons' },
   { image: '/images/cars/land-cruiser-tour.jpg', title: 'Safari Expedition 4x4' },
-  { image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80', title: 'Coastal Paradise' },
+  { image: '/images/coastal-drive.jpg', title: 'Coastal Paradise' },
 ];
 
 export const AnimatedBackground: React.FC = () => {

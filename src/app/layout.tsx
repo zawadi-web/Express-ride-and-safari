@@ -65,8 +65,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`min-h-screen antialiased ${MAINTENANCE_MODE ? 'bg-[#0A0A0B] text-[#F5F2EB]' : 'bg-white text-slate-900 selection:bg-[#F59E0B] selection:text-black'}`}>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <body
+        suppressHydrationWarning
+        className={`min-h-screen antialiased ${
+          MAINTENANCE_MODE
+            ? 'bg-[#0A0A0B] text-[#F5F2EB] selection:bg-amber-500/30 selection:text-amber-100'
+            : 'bg-[#faf8f5] text-slate-900 selection:bg-[#cfe85e] selection:text-[#071b1e]'
+        }`}
+      >
         {children}
       </body>
     </html>

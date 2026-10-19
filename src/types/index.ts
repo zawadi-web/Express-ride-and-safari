@@ -8,6 +8,8 @@ export interface Vehicle {
   transmission: 'Automatic' | 'Manual';
   fuelType: 'Petrol' | 'Diesel' | 'Hybrid';
   image: string;
+  rearImage?: string;
+  imageOrientation?: 'landscape' | 'portrait' | 'panoramic';
   description: string;
   features: string[];
   popular?: boolean;
@@ -27,10 +29,12 @@ export interface SafariDestination {
   id: string;
   name: string;
   region: string;
-  image: string;
+  image?: string;
   tagline: string;
   description: string;
   highlights: string[];
+  distanceFromHub?: string;
+  suggestedFleet?: string;
 }
 
 export interface GalleryItem {
