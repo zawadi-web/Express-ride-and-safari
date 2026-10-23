@@ -95,10 +95,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
             <div className="relative flex items-center bg-[#071b1e] px-3 py-1.5 rounded-xl border border-[#c89b3c]/35 shadow-md shadow-black/15 group-hover:border-[#c89b3c] transition-all">
               <Image
                 src="/logo.png"
-                alt="Express Ride & Safaris Kenya"
-                width={190}
-                height={75}
-                className="h-9 sm:h-11 md:h-12 w-auto object-contain group-hover:scale-[1.02] transition-transform"
+                alt="Edoya Express Ride & Safaris Kenya"
+                width={200}
+                height={80}
+                className="h-10 sm:h-12 w-auto object-contain group-hover:scale-[1.02] transition-transform"
                 priority
               />
             </div>

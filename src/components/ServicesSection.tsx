@@ -102,7 +102,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
                     </button>
 
                     <a
-                      href={getWhatsAppUrl(`Hello Express Ride & Safaris Kenya, I would like to inquire about your ${service.title} service.`)}
+                      href={getWhatsAppUrl(`Hello Edoya Express Ride & Safaris Kenya, I would like to inquire about your ${service.title} service.`)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 rounded-xl border border-[#25D366]/40 bg-[#25D366]/15 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#071b1e] hover:bg-[#25D366]/25 transition-colors"

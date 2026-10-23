@@ -14,7 +14,7 @@ export function getWhatsAppUrl(customMessage?: string): string {
  * WhatsApp inquiry for a specific vehicle
  */
 export function getVehicleWhatsAppUrl(vehicleName: string, category: string): string {
-  const text = `Hello Express Ride & Safaris Kenya, I would like to inquire about renting the ${vehicleName} (${category}). Please share availability and rental requirements.`;
+  const text = `Hello Edoya Express Ride & Safaris Kenya, I would like to inquire about renting the ${vehicleName} (${category}). Please share availability and rental requirements.`;
   return getWhatsAppUrl(text);
 }
 
@@ -23,7 +23,7 @@ export function getVehicleWhatsAppUrl(vehicleName: string, category: string): st
  */
 export function getAirportTransferWhatsAppUrl(location?: string): string {
   const locText = location ? ` in ${location}` : '';
-  const text = `Hello Express Ride & Safaris Kenya, I would like to request an airport transfer${locText}. Please let me know available vehicles and pickup scheduling.`;
+  const text = `Hello Edoya Express Ride & Safaris Kenya, I would like to request an airport transfer${locText}. Please let me know available vehicles and pickup scheduling.`;
   return getWhatsAppUrl(text);
 }
 
@@ -31,7 +31,7 @@ export function getAirportTransferWhatsAppUrl(location?: string): string {
  * WhatsApp inquiry for a safari destination
  */
 export function getSafariWhatsAppUrl(destinationName: string): string {
-  const text = `Hello Express Ride & Safaris Kenya, I am interested in planning a safari experience to ${destinationName}. Please share package options and vehicle arrangements.`;
+  const text = `Hello Edoya Express Ride & Safaris Kenya, I am interested in planning a safari experience to ${destinationName}. Please share package options and vehicle arrangements.`;
   return getWhatsAppUrl(text);
 }
 
@@ -40,7 +40,7 @@ export function getSafariWhatsAppUrl(destinationName: string): string {
  */
 export function formatBookingWhatsAppMessage(enquiry: BookingEnquiry): string {
   const lines: string[] = [
-    `*EXPRESS RIDE & SAFARIS KENYA — RESERVATION ENQUIRY*`,
+    `*EDOYA EXPRESS RIDE & SAFARIS KENYA — RESERVATION ENQUIRY*`,
     ``,
     `*Customer:* ${enquiry.customerName || 'Traveler'}`,
     enquiry.customerPhone ? `*Phone:* ${enquiry.customerPhone}` : '',

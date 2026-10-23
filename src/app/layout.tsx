@@ -4,12 +4,14 @@ import { MAINTENANCE_MODE } from '@/config/maintenance';
 
 export const metadata: Metadata = {
   title: MAINTENANCE_MODE
-    ? 'Express Ride & Safari | Maintenance'
-    : 'Express Ride & Safaris Kenya | Car Hire, Safaris & Airport Transfers',
+    ? 'Edoya Express Ride & Safari | Maintenance'
+    : 'Edoya Express Ride & Safaris Kenya | Car Hire, Safaris & Airport Transfers',
   description: MAINTENANCE_MODE
-    ? "We're taking a little time to improve your experience. Express Ride & Safari will be back soon, ready to get you where you need to go."
-    : 'Express Ride & Safaris Kenya offers private car hire, executive chauffeur transport, punctual airport transfers and bespoke safari tours across Mombasa, Nairobi and Kenya.',
+    ? "We're taking a little time to improve your experience. Edoya Express Ride & Safari will be back soon, ready to get you where you need to go."
+    : 'Edoya Express Ride & Safaris Kenya offers private car hire, executive chauffeur transport, punctual airport transfers and bespoke safari tours across Mombasa, Nairobi and Kenya.',
   keywords: [
+    'Edoya Express Ride & Safaris',
+    'Express ride and safari',
     'Car hire Kenya',
     'Car rental Mombasa',
     'Car hire Nairobi',
@@ -21,17 +23,17 @@ export const metadata: Metadata = {
     'Maasai Mara safaris',
     'Diani beach tours',
   ],
-  authors: [{ name: 'Express Ride & Safaris Kenya' }],
+  authors: [{ name: 'Edoya Express Ride & Safaris Kenya' }],
   metadataBase: new URL('https://www.express-ride-and-safari.co.ke'),
   alternates: {
     canonical: 'https://www.express-ride-and-safari.co.ke',
   },
   openGraph: {
-    title: 'Express Ride & Safaris Kenya | Car Hire, Safaris & Tours',
+    title: 'Edoya Express Ride & Safaris Kenya | Car Hire, Safaris & Tours',
     description:
       'Reliable car hire, airport transfers, and tailor-made safari tours across Mombasa and Nairobi, Kenya.',
     url: 'https://www.express-ride-and-safari.co.ke',
-    siteName: 'Express Ride & Safaris Kenya',
+    siteName: 'Edoya Express Ride & Safaris Kenya',
     locale: 'en_KE',
     type: 'website',
     images: [
@@ -39,7 +41,7 @@ export const metadata: Metadata = {
         url: '/logo.png',
         width: 1024,
         height: 474,
-        alt: 'Express Ride & Safaris Kenya',
+        alt: 'Edoya Express Ride & Safaris Kenya',
       },
     ],
   },

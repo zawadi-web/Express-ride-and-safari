@@ -1,8 +1,8 @@
 import { Vehicle, Service, SafariDestination, GalleryItem } from '@/types';
 
 export const COMPANY_INFO = {
-  name: 'EXPRESS RIDE & SAFARIS KENYA',
-  shortName: 'Express Ride & Safaris',
+  name: 'EDOYA EXPRESS RIDE & SAFARIS KENYA',
+  shortName: 'Edoya Express Ride & Safaris',
   tagline: 'Car Hire & Rentals | Safaris | Tours & Travel',
   heroHeadline: 'Drive. Explore. Experience Kenya.',
   heroSubheadline: 'Reliable car hire, airport transfers and safari travel services across Kenya.',
@@ -28,7 +28,7 @@ export const COMPANY_INFO = {
   whatsappNumberDigits: '254748769876',
   email: 'expressridesandsafaris@gmail.com',
   hours: 'Monday – Sunday: 24/7 Dispatch & Support',
-  defaultWhatsAppMessage: 'Hello Express Ride & Safaris Kenya, I would like to inquire about your car hire and travel services.',
+  defaultWhatsAppMessage: 'Hello Edoya Express Ride & Safaris Kenya, I would like to inquire about your car hire and travel services.',
 };
 
 export const SERVICES: Service[] = [
