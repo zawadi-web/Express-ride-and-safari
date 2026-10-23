@@ -81,12 +81,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
         </div>
       </div>
 
-      {/* Main Navigation Bar - Warm Ivory Translucent Glass */}
+      {/* Main Navigation Bar - Obsidian Translucent Glass */}
       <nav
         className={`w-full transition-all duration-300 ${
           scrolled
-            ? 'bg-[#fbf8f2]/95 backdrop-blur-md shadow-md shadow-black/5 border-b border-[#071b1e]/10 py-3'
-            : 'bg-[#fbf8f2]/90 backdrop-blur-sm border-b border-[#071b1e]/08 py-4'
+            ? 'bg-[#071b1e]/95 backdrop-blur-md shadow-xl shadow-black/25 border-b border-[#c89b3c]/25 py-3'
+            : 'bg-[#071b1e]/85 backdrop-blur-md border-b border-white/10 py-3.5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -110,7 +110,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
               <a
                 key={link.label}
                 href={link.href}
-                className="px-3.5 py-2 text-xs uppercase tracking-[0.14em] font-bold text-[#071b1e]/80 hover:text-[#071b1e] hover:bg-[#071b1e]/05 rounded-lg transition-all duration-150"
+                className="px-3.5 py-2 text-xs uppercase tracking-[0.14em] font-bold text-white/85 hover:text-[#e0b75a] hover:bg-white/10 rounded-lg transition-all duration-150"
               >
                 {link.label}
               </a>
@@ -123,7 +123,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-50 text-[#133935] hover:bg-emerald-100 border border-emerald-200 text-xs font-bold tracking-wide transition-all"
+              className="inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-500/15 text-emerald-300 hover:bg-emerald-500/25 border border-emerald-500/30 text-xs font-bold tracking-wide transition-all"
               title="Chat on WhatsApp"
             >
               <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
@@ -132,7 +132,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
 
             <button
               onClick={() => onOpenInquiry ? onOpenInquiry('Car Hire (Self-Drive)') : window.location.assign('#contact')}
-              className="btn-editorial-gold !py-2 !px-4 !text-xs cursor-pointer"
+              className="btn-editorial-gold !py-2 !px-4 !text-xs cursor-pointer shadow-md"
             >
               <span>Book Trip</span>
               <ArrowRightIcon className="w-3.5 h-3.5" />
@@ -145,7 +145,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 sm:hidden"
+              className="p-2.5 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 sm:hidden"
               aria-label="WhatsApp"
             >
               <WhatsAppIcon className="w-5 h-5 text-[#25D366]" />
@@ -153,7 +153,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl bg-white text-[#071b1e] border border-[#071b1e]/10 focus:outline-none transition-colors"
+              className="p-2.5 rounded-xl bg-white/10 text-white border border-white/20 focus:outline-none transition-colors"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <XIcon className="w-6 h-6 text-[#c89b3c]" /> : <MenuIcon className="w-6 h-6" />}
