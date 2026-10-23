@@ -253,29 +253,25 @@ export const Hero: React.FC<HeroProps> = ({ onOpenInquiry }) => {
           );
         })}
 
-        {/* Cinematic Multi-Layer Gradient Overlays for Maximum Contrast */}
-        {/* Dark Vignette from bottom to center */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#071b1e] via-[#071b1e]/70 to-transparent" />
-        {/* Left directional scrim to guarantee 100% headline legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071b1e]/95 via-[#071b1e]/75 sm:via-[#071b1e]/55 to-transparent w-full md:w-3/4" />
-        {/* Top bar vignette for seamless navigation blending */}
-        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#071b1e]/85 to-transparent" />
-        {/* Savanna Gold atmospheric warm ambient light */}
-        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#c89b3c]/12 rounded-full blur-3xl pointer-events-none" />
-        {/* Subtle radial center vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_35%,_rgba(7,27,30,0.65)_100%)]" />
+        {/* Cinematic Multi-Layer Gradient Overlays - Clean & Unobstructed */}
+        {/* Soft bottom vignette for dock legibility */}
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#071b1e] via-[#071b1e]/50 to-transparent" />
+        {/* Focused left scrim strictly behind the masthead */}
+        <div className="absolute inset-y-0 left-0 w-full sm:w-2/3 lg:w-1/2 bg-gradient-to-r from-[#071b1e]/90 via-[#071b1e]/40 to-transparent" />
+        {/* Subtle top gradient for navbar blending */}
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#071b1e]/60 to-transparent" />
       </div>
 
       {/* ======================================================== */}
-      {/* 2. FOREGROUND EDITORIAL CONTENT & VEHICLE SPOTLIGHT      */}
+      {/* 2. FOREGROUND EDITORIAL CONTENT (UNOBSTRUCTED)          */}
       {/* ======================================================== */}
       <div className="relative z-20 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 md:pt-16 pb-6 flex-1 flex flex-col justify-between">
         
-        {/* Top Grid: Headline on Left, Active Car Spotlight HUD on Right */}
-        <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+        {/* Headline on Left, Right Side Completely Wide Open to Showcase Car */}
+        <div className="grid items-center gap-8 lg:grid-cols-12">
           
-          {/* Left Column: Cinematic Editorial Masthead & Booking Suite */}
-          <div className="space-y-6 lg:col-span-7">
+          {/* Left Column: Clean Editorial Masthead & Booking Suite */}
+          <div className="space-y-6 lg:col-span-8 xl:col-span-7">
             
             {/* Kicker Eyebrow */}
             <div className="inline-flex items-center gap-2.5 rounded-full border border-[#c89b3c]/40 bg-[#071b1e]/80 px-4 py-1.5 backdrop-blur-md shadow-lg">
@@ -287,14 +283,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenInquiry }) => {
 
             {/* Main Editorial Headline */}
             <div className="space-y-4">
-              <h1 className="font-editorial text-4xl sm:text-5xl lg:text-[4.2rem] leading-[1.05] text-white tracking-tight drop-shadow-md">
+              <h1 className="font-editorial text-4xl sm:text-5xl lg:text-[4.2rem] leading-[1.05] text-white tracking-tight drop-shadow-lg">
                 Drive. Explore.{' '}
                 <span className="italic block mt-1 font-normal editorial-gold-shimmer">
                   Experience Kenya.
                 </span>
               </h1>
 
-              <p className="max-w-xl text-base sm:text-lg text-[#d2e4e6] font-normal leading-relaxed drop-shadow-sm">
+              <p className="max-w-xl text-base sm:text-lg text-[#d2e4e6] font-normal leading-relaxed drop-shadow-md">
                 Bespoke 4x4 safaris, executive luxury rentals, and punctual airport transfers. 
                 Headquartered at <strong className="text-white font-semibold">Bamburi Fisheries, Mombasa</strong> with 
                 instant dispatch across <strong className="text-white font-semibold">Nairobi</strong> and iconic national circuits.
@@ -354,81 +350,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenInquiry }) => {
             </div>
           </div>
 
-          {/* Right Column: Floating Active Vehicle Spotlight HUD */}
-          <div className="lg:col-span-5 flex justify-end">
-            <div className="w-full max-w-md rounded-3xl border border-[#c89b3c]/35 bg-[#071b1e]/85 p-5 sm:p-6 backdrop-blur-xl shadow-2xl text-[#fbf8f2] space-y-4">
-              
-              {/* Card Header: Category & Slide Index */}
-              <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-[#c89b3c]" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#e0b75a]">
-                    {activeCar.category}
-                  </span>
-                </div>
-                <span className="text-xs font-mono font-bold text-white/60">
-                  {String(currentIndex + 1).padStart(2, '0')} / {String(FEATURED_HERO_CARS.length).padStart(2, '0')}
-                </span>
-              </div>
-
-              {/* Active Vehicle Title & Kicker */}
-              <div>
-                <span className="text-xs uppercase tracking-wider text-[#a8cbce] font-semibold block">
-                  {activeCar.kicker}
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-black text-white font-editorial tracking-tight mt-0.5">
-                  {activeCar.name}
-                </h2>
-                <p className="text-xs text-[#cedee0] leading-relaxed mt-2">
-                  {activeCar.highlight}
-                </p>
-              </div>
-
-              {/* Quick Specs Grid */}
-              <div className="grid grid-cols-3 gap-2 pt-1 text-center">
-                <div className="rounded-xl border border-white/10 bg-white/5 py-2 px-1">
-                  <span className="text-[10px] uppercase text-[#a8cbce] font-medium block">Seats</span>
-                  <span className="text-xs font-bold text-white block mt-0.5">{activeCar.seats} Passengers</span>
-                </div>
-                <div className="rounded-xl border border-white/10 bg-white/5 py-2 px-1">
-                  <span className="text-[10px] uppercase text-[#a8cbce] font-medium block">Drive</span>
-                  <span className="text-xs font-bold text-white block mt-0.5">{activeCar.transmission}</span>
-                </div>
-                <div className="rounded-xl border border-white/10 bg-white/5 py-2 px-1">
-                  <span className="text-[10px] uppercase text-[#a8cbce] font-medium block">Engine</span>
-                  <span className="text-xs font-bold text-[#e0b75a] block mt-0.5 truncate">{activeCar.fuel}</span>
-                </div>
-              </div>
-
-              {/* Direct Booking for this exact vehicle */}
-              <div className="pt-2 flex items-center gap-2">
-                <a
-                  href={getVehicleWhatsAppUrl(activeCar.name, activeCar.category)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-[#c89b3c] hover:bg-[#e0b75a] text-[#071b1e] py-2.5 px-3 text-xs font-black tracking-wide transition-all shadow-md cursor-pointer"
-                >
-                  <WhatsAppIcon className="w-4 h-4" />
-                  <span>Book This {activeCar.name.split(' ')[1] || 'Car'}</span>
-                </a>
-
-                <button
-                  type="button"
-                  onClick={() => (onOpenInquiry ? onOpenInquiry(activeCar.name) : window.location.assign('#contact'))}
-                  className="px-3.5 py-2.5 rounded-xl border border-white/20 hover:border-[#c89b3c] bg-white/5 text-white text-xs font-bold transition-all cursor-pointer"
-                  title="Inquire online"
-                >
-                  Inquire
-                </button>
-              </div>
-
-              {/* Dispatch hub note */}
-              <div className="text-[11px] text-[#9fc1c5] flex items-center gap-1.5 pt-1">
-                <MapPinIcon className="w-3.5 h-3.5 text-[#c89b3c] shrink-0" />
-                <span>Stationed at: <strong>{activeCar.dispatch}</strong></span>
-              </div>
-            </div>
-          </div>
+          {/* Right Column: Kept completely empty so the full vehicle image is unobstructed and visible */}
+          <div className="hidden lg:block lg:col-span-4 xl:col-span-5" aria-hidden="true" />
 
         </div>
 
@@ -450,15 +373,26 @@ export const Hero: React.FC<HeroProps> = ({ onOpenInquiry }) => {
 
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             
-            {/* Left: Active Live Dispatch Ticker */}
-            <div className="hidden lg:flex items-center gap-3 text-xs text-[#a4bcc0]">
-              <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              <span>
-                <strong>Live Fleet Dispatch:</strong> Bamburi Fisheries, Mombasa &bull; JKIA &amp; Wilson, Nairobi &bull; 24/7 Available
-              </span>
+            {/* Left: Sleek Active Car Badge & Quick WhatsApp Action in Dock */}
+            <div className="flex items-center gap-2.5">
+              <div className="rounded-xl border border-[#c89b3c]/35 bg-[#071b1e]/85 px-3.5 py-1.5 backdrop-blur-md text-xs shadow-lg">
+                <span className="text-[10px] uppercase font-black text-[#e0b75a] block tracking-wider">
+                  #{currentIndex + 1} &bull; {activeCar.category}
+                </span>
+                <span className="font-bold text-white block truncate max-w-[180px] sm:max-w-xs">
+                  {activeCar.name}
+                </span>
+              </div>
+
+              <a
+                href={getVehicleWhatsAppUrl(activeCar.name, activeCar.category)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-xl bg-[#c89b3c] hover:bg-[#e0b75a] text-[#071b1e] px-3.5 py-2 text-xs font-black transition-all cursor-pointer shadow-md"
+              >
+                <WhatsAppIcon className="w-3.5 h-3.5" />
+                <span>Book This {activeCar.name.split(' ')[1] || 'Car'}</span>
+              </a>
             </div>
 
             {/* Center/Right: Interactive Carousel Controls & Car Thumbnails */}
