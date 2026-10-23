@@ -11,6 +11,6 @@
  */
 
 export const MAINTENANCE_MODE: boolean =
-  process.env.NEXT_PUBLIC_MAINTENANCE_MODE !== 'false' && true;
+  process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true';
 
 

@@ -1,429 +1,174 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { COMPANY_INFO } from '@/data/content';
 import { getWhatsAppUrl } from '@/utils/whatsapp';
-import { PhoneIcon, WhatsAppIcon, MapPinIcon, ClockIcon, CheckIcon, ArrowRightIcon, MailIcon } from './Icons';
+import { SmartBookingForm } from './SmartBookingForm';
+import { PhoneIcon, WhatsAppIcon, MapPinIcon, ClockIcon, MailIcon, ShieldCheckIcon } from './Icons';
 
 interface ContactSectionProps {
   initialService?: string;
 }
 
-export const ContactSection: React.FC<ContactSectionProps> = ({ initialService = 'Car Hire' }) => {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    phoneNumber: '',
-    email: '',
-    serviceRequired: initialService,
-    travelDate: '',
-    pickupLocation: 'Bamburi Fisheries, Mombasa',
-    message: '',
-  });
-
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [submitMessage, setSubmitMessage] = useState<string>('');
-  const [mailtoFallback, setMailtoFallback] = useState<string>('');
-
-  const servicesList = [
-    'Car Hire',
-    'Self Drive',
-    'Chauffeur Service',
-    'Airport Transfer',
-    'Safari',
-    'Tours & Travel',
-    'Other',
-  ];
-
-  const validate = () => {
-    const errs: { [key: string]: string } = {};
-    if (!formData.fullName.trim()) errs.fullName = 'Full Name is required';
-    if (!formData.phoneNumber.trim()) {
-      errs.phoneNumber = 'Phone Number is required';
-    } else if (formData.phoneNumber.trim().length < 9) {
-      errs.phoneNumber = 'Enter a valid phone number';
-    }
-    if (!formData.travelDate) errs.travelDate = 'Please select a travel or pickup date';
-    return errs;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    setErrors({});
-    setLoading(true);
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to submit inquiry.');
-      }
-
-      setSubmitMessage(data.message || 'Your inquiry has been sent successfully.');
-      if (data.mailto) setMailtoFallback(data.mailto);
-      setSubmitted(true);
-    } catch (err: any) {
-      // Fallback: construct direct mailto and notify user
-      const mailtoSub = encodeURIComponent(`Inquiry: ${formData.serviceRequired} - ${formData.fullName}`);
-      const mailtoBody = encodeURIComponent(
-        `Name: ${formData.fullName}\nPhone: ${formData.phoneNumber}\nEmail: ${formData.email || 'N/A'}\nService: ${formData.serviceRequired}\nDate: ${formData.travelDate}\nLocation: ${formData.pickupLocation}\nNotes: ${formData.message}`
-      );
-      setMailtoFallback(`mailto:${COMPANY_INFO.email}?subject=${mailtoSub}&body=${mailtoBody}`);
-      setSubmitMessage('Inquiry logged. You can also send directly via email or WhatsApp below.');
-      setSubmitted(true);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleSendViaWhatsApp = () => {
-    const msg = `*New Website Inquiry*\n\n*Name:* ${formData.fullName || 'Not provided'}\n*Phone:* ${formData.phoneNumber || 'Not provided'}\n*Service:* ${formData.serviceRequired}\n*Date:* ${formData.travelDate || 'Flexible'}\n*Pickup Location:* ${formData.pickupLocation}\n*Notes:* ${formData.message || 'None'}`;
-    window.open(getWhatsAppUrl(msg), '_blank');
-  };
-
+export const ContactSection: React.FC<ContactSectionProps> = ({ initialService = 'Car Hire (Self-Drive)' }) => {
   return (
-    <section id="contact" className="py-20 text-slate-900 border-b border-slate-200/60 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="relative py-24 border-b border-[#071b1e]/10 bg-[#fbf8f2] overflow-hidden">
+      {/* Subtle atmospheric ambient glow */}
+      <div className="absolute top-1/3 -right-40 w-96 h-96 rounded-full bg-[#c89b3c]/10 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 -left-40 w-96 h-96 rounded-full bg-[#1b4d47]/08 blur-3xl pointer-events-none" />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 backdrop-blur-sm border border-amber-200 text-xs font-bold uppercase tracking-wider text-[#D97706] mb-4 shadow-xs">
-            Get In Touch
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <div className="section-kicker mx-auto mb-4">
+            <span className="w-2 h-2 rounded-full bg-[#c89b3c]" />
+            Official Booking &amp; Hotline Desk
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 mb-4">
-            Contact &amp; Reservations
+          <h2 className="section-title mb-4 font-editorial">
+            Direct Reservations &amp; Enquiries
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-            Reach out directly by phone, WhatsApp, or send an inquiry below. We respond promptly.
+          <p className="section-copy mx-auto max-w-2xl text-base sm:text-lg">
+            Plan your Kenyan journey with our verified reservation desk. Submit your travel details below to launch a prefilled WhatsApp enquiry, or call us directly 24/7.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
-          {/* LEFT: Business Info & Contact Cards */}
+          {/* LEFT: Business Info & Verified Operations */}
           <div className="lg:col-span-5 space-y-6">
             
-            <div className="rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 p-7 shadow-sm">
-              <h3 className="text-xl font-black tracking-tight text-slate-950 mb-1">
+            <div className="editorial-card rounded-[2rem] p-7 sm:p-8">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="px-3 py-1 rounded-full bg-[#133935]/10 text-[#133935] text-[10px] font-bold uppercase tracking-wider">
+                  Verified Headquarters
+                </span>
+                <span className="text-xs text-[#8f7547] font-semibold">Mombasa &bull; Nairobi</span>
+              </div>
+
+              <h3 className="text-2xl font-bold font-editorial text-[#071b1e] tracking-tight mb-2">
                 {COMPANY_INFO.name}
               </h3>
-              <p className="text-xs text-[#D97706] font-bold uppercase tracking-wider mb-6">
-                Car Hire &amp; Rentals | Safaris | Tours &amp; Travel
+              <p className="text-xs text-[#c89b3c] font-bold uppercase tracking-[0.16em] mb-6">
+                Car Hire &amp; Rentals · Safaris · Airport Transfers
               </p>
 
               <div className="space-y-5 text-sm">
                 
-                {/* Locations */}
+                {/* Mombasa Head Office */}
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
-                    <MapPinIcon className="w-4 h-4 text-[#D97706]" />
+                  <div className="w-10 h-10 rounded-xl bg-[#c89b3c]/15 border border-[#c89b3c]/30 flex items-center justify-center shrink-0 mt-0.5 text-[#9d7322]">
+                    <MapPinIcon className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-xs uppercase text-slate-500 font-bold block">Head Office &amp; Locations</span>
-                    <span className="text-slate-900 font-semibold text-sm block">Bamburi Fisheries, Mombasa (Head Office)</span>
-                    <span className="text-xs text-slate-500">Bamburi Fisheries &bull; Moi Airport (MBA) &bull; Mombasa SGR &bull; Nairobi Hub</span>
+                    <span className="text-[11px] uppercase tracking-wider text-[#6f8285] font-bold block">Head Office</span>
+                    <span className="text-[#071b1e] font-bold text-sm block">Bamburi Fisheries, Mombasa</span>
+                    <span className="text-xs text-[#4d6669] leading-relaxed">
+                      Fast dispatch to Moi Airport (MBA), Nyali, Bamburi resorts &amp; Mombasa SGR Terminus.
+                    </span>
                   </div>
                 </div>
 
-                {/* Email Address */}
+                {/* Nairobi Hub */}
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
-                    <MailIcon className="w-4 h-4 text-[#D97706]" />
+                  <div className="w-10 h-10 rounded-xl bg-[#1b4d47]/10 border border-[#1b4d47]/20 flex items-center justify-center shrink-0 mt-0.5 text-[#1b4d47]">
+                    <MapPinIcon className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-xs uppercase text-slate-500 font-bold block">Official Mailing Address</span>
+                    <span className="text-[11px] uppercase tracking-wider text-[#6f8285] font-bold block">Nairobi Hub</span>
+                    <span className="text-[#071b1e] font-bold text-sm block">Nairobi Capital Operations</span>
+                    <span className="text-xs text-[#4d6669] leading-relaxed">
+                      Covering JKIA, Wilson Airport, Central Business District, Westlands &amp; outbound safaris.
+                    </span>
+                  </div>
+                </div>
+
+                {/* Primary WhatsApp */}
+                <div className="flex items-start gap-3.5">
+                  <div className="w-10 h-10 rounded-xl bg-[#25D366]/15 border border-[#25D366]/30 flex items-center justify-center shrink-0 mt-0.5 text-[#1ebd5b]">
+                    <WhatsAppIcon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[11px] uppercase tracking-wider text-[#6f8285] font-bold block">Primary WhatsApp Line</span>
                     <a
-                      href={`mailto:${COMPANY_INFO.email}`}
-                      className="text-slate-900 font-bold text-sm hover:text-[#D97706] transition-colors block break-all"
+                      href={getWhatsAppUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#133935] hover:text-[#1ebd5b] font-black text-base transition-colors block"
                     >
-                      {COMPANY_INFO.email}
+                      {COMPANY_INFO.whatsappPhone}
                     </a>
-                    <span className="text-xs text-slate-500">Fast quotes, bookings &amp; formal inquiries</span>
+                    <span className="text-xs text-[#526e72]">Instant responses &amp; vehicle availability checks</span>
                   </div>
                 </div>
 
-                {/* Direct Phone Numbers */}
+                {/* Direct Hotline Calling */}
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
-                    <PhoneIcon className="w-4 h-4 text-[#D97706]" />
+                  <div className="w-10 h-10 rounded-xl bg-[#c89b3c]/15 border border-[#c89b3c]/30 flex items-center justify-center shrink-0 mt-0.5 text-[#9d7322]">
+                    <PhoneIcon className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-xs uppercase text-slate-500 font-bold block">Direct Calling</span>
-                    <div className="flex flex-col sm:flex-row sm:gap-3 text-slate-900 font-bold mt-0.5">
-                      <a href={`tel:${COMPANY_INFO.phones[0]}`} className="hover:text-[#D97706] transition-colors">
+                    <span className="text-[11px] uppercase tracking-wider text-[#6f8285] font-bold block">24/7 Calling Hotlines</span>
+                    <div className="flex flex-wrap items-center gap-3 text-sm font-bold text-[#071b1e] mt-0.5">
+                      <a href={`tel:${COMPANY_INFO.phones[0]}`} className="hover:text-[#c89b3c] transition-colors">
                         {COMPANY_INFO.phones[0]}
                       </a>
-                      <span className="hidden sm:inline text-slate-300">/</span>
-                      <a href={`tel:${COMPANY_INFO.phones[1]}`} className="hover:text-[#D97706] transition-colors">
+                      <span className="text-[#c89b3c]">&bull;</span>
+                      <a href={`tel:${COMPANY_INFO.phones[1]}`} className="hover:text-[#c89b3c] transition-colors">
                         {COMPANY_INFO.phones[1]}
                       </a>
                     </div>
                   </div>
                 </div>
 
-                {/* Official WhatsApp */}
+                {/* Official Email */}
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
-                    <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
+                  <div className="w-10 h-10 rounded-xl bg-[#1b4d47]/10 border border-[#1b4d47]/20 flex items-center justify-center shrink-0 mt-0.5 text-[#1b4d47]">
+                    <MailIcon className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-xs uppercase text-slate-500 font-bold block">Primary WhatsApp</span>
+                    <span className="text-[11px] uppercase tracking-wider text-[#6f8285] font-bold block">Official Inquiries Email</span>
                     <a
-                      href={getWhatsAppUrl()}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-emerald-700 font-extrabold text-sm hover:underline block"
+                      href={`mailto:${COMPANY_INFO.email}`}
+                      className="text-[#071b1e] font-semibold text-sm hover:text-[#c89b3c] transition-colors block break-all"
                     >
-                      {COMPANY_INFO.whatsappPhone}
+                      {COMPANY_INFO.email}
                     </a>
-                    <span className="text-xs text-slate-500 font-medium">Instant quotes &amp; vehicle availability</span>
                   </div>
                 </div>
 
-                {/* Business Hours */}
+                {/* Operating Hours */}
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
-                    <ClockIcon className="w-4 h-4 text-[#D97706]" />
+                  <div className="w-10 h-10 rounded-xl bg-white border border-[#071b1e]/10 flex items-center justify-center shrink-0 mt-0.5 text-[#6f8285]">
+                    <ClockIcon className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-xs uppercase text-slate-500 font-bold block">Operating Hours</span>
-                    <span className="text-slate-800 font-medium text-xs block">{COMPANY_INFO.hours}</span>
+                    <span className="text-[11px] uppercase tracking-wider text-[#6f8285] font-bold block">Support &amp; Dispatch</span>
+                    <span className="text-xs font-semibold text-[#071b1e] block">{COMPANY_INFO.hours}</span>
                   </div>
                 </div>
 
               </div>
             </div>
 
-            {/* Direct Quick WhatsApp Banner */}
-            <div className="rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-200 p-6 flex items-center justify-between gap-4 shadow-sm">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 block">Need an Instant Response?</span>
-                <span className="text-sm font-bold text-slate-900 block mt-0.5">Chat directly with our reservations desk</span>
+            {/* Trust Banner */}
+            <div className="editorial-card-dark rounded-2xl p-6">
+              <div className="flex items-center gap-2 mb-2">
+                <ShieldCheckIcon className="w-5 h-5 text-[#c89b3c]" />
+                <h4 className="text-sm font-bold tracking-wide uppercase text-[#fbf8f2]">
+                  Authentic Service Guarantee
+                </h4>
               </div>
-              <a
-                href={getWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-black font-extrabold text-xs uppercase tracking-wider shrink-0 transition-colors shadow-sm"
-              >
-                <WhatsAppIcon className="w-4 h-4" />
-                <span>WhatsApp</span>
-              </a>
+              <p className="text-xs text-[#cedee0] leading-relaxed">
+                All vehicles in our fleet are regularly serviced, thoroughly cleaned, and backed by experienced local drivers and support staff across Kenya.
+              </p>
             </div>
 
           </div>
 
-          {/* RIGHT: Contact / Inquiry Form */}
+          {/* RIGHT: Smart WhatsApp Booking Suite */}
           <div className="lg:col-span-7">
-            <div className="rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 p-7 sm:p-9 shadow-md">
-              
-              <h3 className="text-2xl font-black text-slate-950 mb-1">
-                Send an Inquiry
-              </h3>
-              <p className="text-xs text-slate-500 mb-6 font-medium">
-                Inquiries are delivered directly to <span className="font-semibold text-slate-800">{COMPANY_INFO.email}</span>. We confirm availability quickly.
-              </p>
-
-              {submitted ? (
-                <div className="p-8 rounded-xl bg-emerald-50/80 border border-emerald-200 text-center animate-in fade-in duration-300">
-                  <div className="w-14 h-14 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-700 mx-auto mb-4">
-                    <CheckIcon className="w-7 h-7" />
-                  </div>
-                  <h4 className="text-xl font-bold text-slate-950 mb-2">Inquiry Dispatched</h4>
-                  <p className="text-sm text-slate-700 max-w-md mx-auto mb-2">
-                    Thank you, <strong className="text-slate-950">{formData.fullName}</strong>. Your request for <strong className="text-[#D97706]">{formData.serviceRequired}</strong> has been received.
-                  </p>
-                  <p className="text-xs text-slate-500 mb-6">
-                    A copy is routed to our Bamburi Fisheries office at <strong className="text-slate-800">{COMPANY_INFO.email}</strong>.
-                  </p>
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                    <button
-                      onClick={handleSendViaWhatsApp}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#25D366] text-black font-extrabold text-xs uppercase tracking-wider shadow-sm"
-                    >
-                      <WhatsAppIcon className="w-4 h-4" />
-                      <span>Speed Up via WhatsApp</span>
-                    </button>
-                    {mailtoFallback && (
-                      <a
-                        href={mailtoFallback}
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900 text-white hover:bg-slate-800 text-xs font-bold shadow-xs transition-colors"
-                      >
-                        <MailIcon className="w-4 h-4 text-[#F59E0B]" />
-                        <span>Open in Email App</span>
-                      </a>
-                    )}
-                    <button
-                      onClick={() => setSubmitted(false)}
-                      className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white text-slate-700 hover:text-black text-xs font-bold border border-slate-200 shadow-xs"
-                    >
-                      New Inquiry
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  
-                  {/* Full Name & Phone */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.fullName}
-                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        placeholder="e.g. John Kamau"
-                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 text-slate-900 border text-sm focus:outline-none transition-colors ${
-                          errors.fullName ? 'border-red-500' : 'border-slate-200 focus:border-[#D97706] focus:bg-white'
-                        }`}
-                      />
-                      {errors.fullName && <p className="text-xs text-red-500 mt-1">{errors.fullName}</p>}
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                        Phone Number *
-                      </label>
-                      <input
-                        type="tel"
-                        value={formData.phoneNumber}
-                        onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
-                        placeholder="e.g. 0712 345 678"
-                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 text-slate-900 border text-sm focus:outline-none transition-colors ${
-                          errors.phoneNumber ? 'border-red-500' : 'border-slate-200 focus:border-[#D97706] focus:bg-white'
-                        }`}
-                      />
-                      {errors.phoneNumber && <p className="text-xs text-red-500 mt-1">{errors.phoneNumber}</p>}
-                    </div>
-                  </div>
-
-                  {/* Email & Service Required */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                        Email Address (Optional)
-                      </label>
-                      <input
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="name@example.com"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 text-slate-900 border border-slate-200 focus:border-[#D97706] focus:bg-white text-sm focus:outline-none transition-colors"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                        Service Required *
-                      </label>
-                      <select
-                        value={formData.serviceRequired}
-                        onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 text-slate-900 border border-slate-200 focus:border-[#D97706] focus:bg-white text-sm focus:outline-none transition-colors cursor-pointer"
-                      >
-                        {servicesList.map((srv) => (
-                          <option key={srv} value={srv} className="bg-white text-slate-900">
-                            {srv}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-
-                  {/* Travel Date & Pickup Location */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                        Travel / Pickup Date *
-                      </label>
-                      <input
-                        type="date"
-                        value={formData.travelDate}
-                        onChange={(e) => setFormData({ ...formData, travelDate: e.target.value })}
-                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 text-slate-900 border text-sm focus:outline-none transition-colors ${
-                          errors.travelDate ? 'border-red-500' : 'border-slate-200 focus:border-[#D97706] focus:bg-white'
-                        }`}
-                      />
-                      {errors.travelDate && <p className="text-xs text-red-500 mt-1">{errors.travelDate}</p>}
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                        Preferred Location / City
-                      </label>
-                      <select
-                        value={formData.pickupLocation}
-                        onChange={(e) => setFormData({ ...formData, pickupLocation: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 text-slate-900 border border-slate-200 focus:border-[#D97706] focus:bg-white text-sm focus:outline-none transition-colors cursor-pointer"
-                      >
-                        <option value="Bamburi Fisheries, Mombasa (Head Office)">Bamburi Fisheries, Mombasa (Head Office)</option>
-                        <option value="Bamburi Beach / Nyali Resorts">Bamburi Beach / Nyali Resorts</option>
-                        <option value="Moi International Airport (MBA)">Moi International Airport (MBA)</option>
-                        <option value="Mombasa SGR Terminus">Mombasa SGR Terminus</option>
-                        <option value="Nairobi (JKIA / Wilson / CBD)">Nairobi (JKIA / Wilson / CBD)</option>
-                        <option value="Other Location">Other / Cross-country</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  {/* Message */}
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                      Additional Details / Requirements
-                    </label>
-                    <textarea
-                      rows={4}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Specify preferred vehicle model, number of passengers, flight details, or destination itinerary..."
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 text-slate-900 border border-slate-200 focus:border-[#D97706] focus:bg-white text-sm focus:outline-none transition-colors"
-                    />
-                  </div>
-
-                  {/* Submit Button + WhatsApp forwarder option */}
-                  <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="flex-1 inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-[#F59E0B] hover:bg-[#D97706] text-black font-extrabold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-md shadow-[#F59E0B]/25 disabled:opacity-50"
-                    >
-                      <span>{loading ? 'Submitting...' : 'Submit Inquiry'}</span>
-                      <ArrowRightIcon className="w-4 h-4" />
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={handleSendViaWhatsApp}
-                      className="inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 font-extrabold text-xs uppercase tracking-wider transition-colors cursor-pointer"
-                    >
-                      <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
-                      <span>Send to WhatsApp</span>
-                    </button>
-                  </div>
-
-                  <p className="text-[11px] text-slate-500 text-center pt-2 font-medium">
-                    No payment required at this step. We confirm availability with you first.
-                  </p>
-
-                </form>
-              )}
-
-            </div>
+            <SmartBookingForm initialService={initialService} />
           </div>
 
         </div>

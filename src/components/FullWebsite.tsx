@@ -62,7 +62,7 @@ export function FullWebsite() {
       <AnimatedBackground />
 
       <Navbar onOpenInquiry={handleOpenGeneralInquiry} />
-      <Hero />
+      <Hero onOpenInquiry={handleOpenGeneralInquiry} />
       <ServicesSection onSelectService={handleSelectService} />
       <VehicleSection onSelectVehicle={handleSelectVehicle} />
       <SafariSection onPlanTrip={handlePlanTrip} />

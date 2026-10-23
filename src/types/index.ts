@@ -54,3 +54,20 @@ export interface InquiryFormData {
   pickupLocation: string;
   message: string;
 }
+
+export interface BookingEnquiry {
+  serviceType: string;
+  pickupLocation: string;
+  destination?: string;
+  travelDate: string;
+  travelTime?: string;
+  returnDate?: string;
+  passengers: string;
+  vehiclePreference?: string;
+  flightNumber?: string;
+  airportName?: string;
+  safariCircuit?: string;
+  customerName: string;
+  customerPhone?: string;
+  specialRequests?: string;
+}

@@ -39,25 +39,30 @@ export const VehicleSection: React.FC<VehicleSectionProps> = ({ onSelectVehicle 
   };
 
   return (
-    <section id="cars" className="relative border-b border-[#0d2d30]/10 py-20 bg-[#faf8f5]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(207,232,94,0.12),_transparent_22%)]" />
+    <section id="cars" className="relative border-b border-[#071b1e]/10 py-24 bg-[#fbf8f2]">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(200,155,60,0.08),_transparent_35%)] pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Editorial Header */}
-        <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <div className="section-kicker mb-3">Authentic Fleet Showcase</div>
-            <h2 className="section-title mb-3">Genuine vehicles. Transparent details.</h2>
+            <div className="section-kicker mb-3">
+              <span className="w-2 h-2 rounded-full bg-[#c89b3c]" />
+              Authentic Kenyan Fleet
+            </div>
+            <h2 className="section-title mb-3 font-editorial">
+              Genuine Vehicles. Transparent Details.
+            </h2>
             <p className="section-copy text-base sm:text-lg">
-              Every photograph below depicts our actual fleet stationed in Mombasa and Nairobi — maintained to high standards for private hire, executive travel, and safari exploration.
+              Every photograph below depicts our actual fleet stationed in Mombasa and Nairobi — maintained to exacting standards for private hire, executive delegations, and safari exploration.
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-            <div className="rounded-2xl border border-[#0d2d30]/10 bg-white/90 px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#1a3a40] shadow-[0_8px_20px_rgba(6,24,28,0.04)]">
-              Stationed in <span className="font-black text-[#0d252a]">Mombasa &amp; Nairobi</span>
+            <div className="rounded-2xl border border-[#071b1e]/10 bg-white/90 px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#133935] shadow-xs">
+              Stationed in <span className="font-black text-[#071b1e]">Mombasa &amp; Nairobi</span>
             </div>
-            <div className="rounded-2xl border border-[#0d2d30]/10 bg-[#cfe85e]/25 px-3.5 py-3 text-[11px] font-black uppercase tracking-[0.12em] text-[#0d252a]">
+            <div className="rounded-2xl border border-[#c89b3c]/30 bg-[#c89b3c]/15 px-3.5 py-3 text-[11px] font-black uppercase tracking-[0.12em] text-[#9d7322]">
               23 Verified Photos
             </div>
           </div>
@@ -78,16 +83,16 @@ export const VehicleSection: React.FC<VehicleSectionProps> = ({ onSelectVehicle 
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => setSelectedCategory(cat)}
-                className={`whitespace-nowrap rounded-xl px-4 py-2.5 text-xs font-black uppercase tracking-[0.12em] transition-all duration-200 flex items-center gap-2 ${
+                className={`whitespace-nowrap rounded-xl px-4 py-2.5 text-xs font-black uppercase tracking-[0.12em] transition-all duration-200 flex items-center gap-2 cursor-pointer ${
                   isActive
-                    ? 'bg-[#0d252a] text-[#f7f4ee] shadow-[0_12px_24px_rgba(13,37,42,0.18)]'
-                    : 'border border-[#0d2d30]/10 bg-white/85 text-[#12363c] hover:border-[#0d2d30]/20 hover:bg-[#edf3f1]'
+                    ? 'bg-[#071b1e] text-[#fbf8f2] border border-[#c89b3c] shadow-md shadow-black/15'
+                    : 'border border-[#071b1e]/10 bg-white/80 text-[#071b1e] hover:border-[#c89b3c]/40 hover:bg-white'
                 }`}
               >
                 <span>{cat === 'All' ? 'All Fleet' : cat}</span>
                 <span
-                  className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${
-                    isActive ? 'bg-white/20 text-[#f7f4ee]' : 'bg-[#0d2d30]/5 text-[#547e82]'
+                  className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                    isActive ? 'bg-[#c89b3c] text-[#071b1e]' : 'bg-[#071b1e]/06 text-[#5b7579]'
                   }`}
                 >
                   {count}
@@ -139,11 +144,11 @@ export const VehicleSection: React.FC<VehicleSectionProps> = ({ onSelectVehicle 
 
                   {/* Top Badges */}
                   <div className="absolute left-4 top-4 z-10 flex items-center gap-2">
-                    <span className="rounded-full border border-white/25 bg-[#071b1e]/75 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#f7f4ee] backdrop-blur-md">
+                    <span className="rounded-full border border-white/25 bg-[#071b1e]/85 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#fbf8f2] backdrop-blur-md">
                       {vehicle.category}
                     </span>
                     {vehicle.popular && (
-                      <span className="rounded-full bg-[#cfe85e] px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-[#071b1e] shadow-sm">
+                      <span className="rounded-full bg-[#c89b3c] px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-[#071b1e] shadow-xs">
                         Popular
                       </span>
                     )}
@@ -154,7 +159,7 @@ export const VehicleSection: React.FC<VehicleSectionProps> = ({ onSelectVehicle 
                     <div
                       role="group"
                       aria-label={`${vehicle.name} view angle`}
-                      className="absolute bottom-3.5 right-3.5 z-10 inline-flex items-center rounded-full bg-[#071b1e]/85 p-1 backdrop-blur-md border border-white/20 shadow-lg"
+                      className="absolute bottom-3.5 right-3.5 z-10 inline-flex items-center rounded-full bg-[#071b1e]/90 p-1 backdrop-blur-md border border-white/20 shadow-lg"
                     >
                       <button
                         type="button"
@@ -162,9 +167,9 @@ export const VehicleSection: React.FC<VehicleSectionProps> = ({ onSelectVehicle 
                           e.stopPropagation();
                           setVehicleAngle(vehicle.id, 'front');
                         }}
-                        className={`rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] transition-all ${
+                        className={`rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] transition-all cursor-pointer ${
                           currentAngle === 'front'
-                            ? 'bg-[#cfe85e] text-[#071b1e] shadow-sm'
+                            ? 'bg-[#c89b3c] text-[#071b1e] shadow-xs'
                             : 'text-white/75 hover:text-white'
                         }`}
                       >
@@ -176,9 +181,9 @@ export const VehicleSection: React.FC<VehicleSectionProps> = ({ onSelectVehicle 
                           e.stopPropagation();
                           setVehicleAngle(vehicle.id, 'rear');
                         }}
-                        className={`rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] transition-all ${
+                        className={`rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] transition-all cursor-pointer ${
                           currentAngle === 'rear'
-                            ? 'bg-[#cfe85e] text-[#071b1e] shadow-sm'
+                            ? 'bg-[#c89b3c] text-[#071b1e] shadow-xs'
                             : 'text-white/75 hover:text-white'
                         }`}
                       >
@@ -243,14 +248,14 @@ export const VehicleSection: React.FC<VehicleSectionProps> = ({ onSelectVehicle 
                   </div>
 
                   {/* Actions: Request Modal & Direct WhatsApp */}
-                  <div className="flex items-stretch gap-2.5 border-t border-[#0d2d30]/10 pt-4">
+                  <div className="flex items-stretch gap-2.5 border-t border-[#071b1e]/10 pt-4">
                     <button
                       onClick={() =>
                         onSelectVehicle ? onSelectVehicle(vehicle) : window.location.assign('#contact')
                       }
-                      className="premium-button flex-1 px-4 py-3 text-xs"
+                      className="btn-editorial-gold flex-1 !py-3 !text-xs cursor-pointer"
                     >
-                      <span>Request This Vehicle</span>
+                      <span>Request Vehicle</span>
                       <ArrowRightIcon className="w-3.5 h-3.5" />
                     </button>
 
@@ -258,10 +263,10 @@ export const VehicleSection: React.FC<VehicleSectionProps> = ({ onSelectVehicle 
                       href={getVehicleWhatsAppUrl(vehicle.name, vehicle.category)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center rounded-xl border border-[#25D366]/30 bg-[#ecfbf0] px-3.5 text-[#0d3b31] hover:bg-[#d8f7e0] transition-colors"
+                      className="inline-flex items-center justify-center rounded-xl border border-[#25D366]/40 bg-[#25D366]/15 px-3.5 text-[#071b1e] hover:bg-[#25D366]/25 transition-colors"
                       title={`Quick inquiry for ${vehicle.name} via WhatsApp`}
                     >
-                      <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
+                      <WhatsAppIcon className="w-4 h-4 text-[#1ebd5b]" />
                     </a>
                   </div>
                 </div>
@@ -271,14 +276,14 @@ export const VehicleSection: React.FC<VehicleSectionProps> = ({ onSelectVehicle 
         </div>
 
         {/* Fleet Hotline Footer */}
-        <div className="mt-14 rounded-2xl border border-[#0d2d30]/10 bg-white/80 p-6 text-center shadow-sm">
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#527178] mb-2">
+        <div className="mt-14 editorial-card rounded-2xl p-6 text-center shadow-xs">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#527178] mb-2">
             Looking for a specific model or tailored long-term fleet arrangement?
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4 text-sm font-black text-[#0d252a]">
-            <span>Mombasa Office &amp; Hub: <a href="tel:0748769876" className="text-[#1d6d68] hover:underline">0748 769 876</a></span>
-            <span className="text-[#0d2d30]/20">•</span>
-            <span>Nairobi Dispatch: <a href="tel:0793612412" className="text-[#1d6d68] hover:underline">0793 612 412</a></span>
+          <div className="flex flex-wrap items-center justify-center gap-4 text-sm font-black text-[#071b1e]">
+            <span>Mombasa Office: <a href="tel:0748769876" className="text-[#133935] hover:text-[#c89b3c] transition-colors">0748 769 876</a></span>
+            <span className="text-[#c89b3c]">•</span>
+            <span>Nairobi Dispatch: <a href="tel:0793612412" className="text-[#133935] hover:text-[#c89b3c] transition-colors">0793 612 412</a></span>
           </div>
         </div>
       </div>

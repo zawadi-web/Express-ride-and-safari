@@ -5,10 +5,10 @@ import { MAINTENANCE_MODE } from '@/config/maintenance';
 export const metadata: Metadata = {
   title: MAINTENANCE_MODE
     ? 'Express Ride & Safari | Maintenance'
-    : 'Express Ride & Safaris Kenya | Car Hire, Safaris & Tours',
+    : 'Express Ride & Safaris Kenya | Car Hire, Safaris & Airport Transfers',
   description: MAINTENANCE_MODE
     ? "We're taking a little time to improve your experience. Express Ride & Safari will be back soon, ready to get you where you need to go."
-    : 'Express Ride & Safaris Kenya offers car hire, chauffeur services, airport transfers, safari experiences and tours across Kenya.',
+    : 'Express Ride & Safaris Kenya offers private car hire, executive chauffeur transport, punctual airport transfers and bespoke safari tours across Mombasa, Nairobi and Kenya.',
   keywords: [
     'Car hire Kenya',
     'Car rental Mombasa',
@@ -71,7 +71,7 @@ export default function RootLayout({
         className={`min-h-screen antialiased ${
           MAINTENANCE_MODE
             ? 'bg-[#0A0A0B] text-[#F5F2EB] selection:bg-amber-500/30 selection:text-amber-100'
-            : 'bg-[#faf8f5] text-slate-900 selection:bg-[#cfe85e] selection:text-[#071b1e]'
+            : 'bg-[#fbf8f2] text-[#071b1e] selection:bg-[#c89b3c]/25 selection:text-[#051416]'
         }`}
       >
         {children}

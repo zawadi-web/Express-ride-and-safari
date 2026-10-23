@@ -179,19 +179,19 @@ export const AnimatedBackground: React.FC = () => {
         ))}
       </div>
 
-      {/* 3. LUXURY WHITE DIFFUSION VEIL: Guarantees 100% crystal-clear readability for foreground text & cards */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/92 via-white/82 to-white/92 backdrop-blur-[1.5px]" />
+      {/* 3. LUXURY WARM IVORY DIFFUSION VEIL: Guarantees 100% crystal-clear readability for foreground text & cards */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#fbf8f2]/95 via-[#fbf8f2]/88 to-[#fbf8f2]/95 backdrop-blur-[2px]" />
 
-      {/* 4. DYNAMIC AMBER & SKY AMBIENT GLOWS THAT SHIFT WITH SCROLL */}
+      {/* 4. DYNAMIC SAVANNA GOLD & FOREST AMBIENT GLOWS THAT SHIFT WITH SCROLL */}
       <div 
-        className="absolute w-[600px] h-[600px] bg-[#F59E0B]/12 rounded-full blur-3xl transition-transform duration-300"
+        className="absolute w-[600px] h-[600px] bg-[#c89b3c]/08 rounded-full blur-3xl transition-transform duration-300 pointer-events-none"
         style={{
           top: `${10 + scrollProgress * 60}%`,
           right: '5%',
         }}
       />
       <div 
-        className="absolute w-[650px] h-[650px] bg-[#D97706]/8 rounded-full blur-3xl transition-transform duration-300"
+        className="absolute w-[650px] h-[650px] bg-[#1b4d47]/06 rounded-full blur-3xl transition-transform duration-300 pointer-events-none"
         style={{
           top: `${30 + scrollProgress * 50}%`,
           left: '2%',
